@@ -1,0 +1,331 @@
+$color_1: #2a2a2a;
+$color_2: #fff;
+$color_3: #a1a1a1;
+$color_4: #aaaaaa;
+$color_5: #aaa;
+$color_6: #cff;
+$color_7: #c66;
+$font-family_1: 'Poppins', sans-serif;
+$font-family_2: 'FontAwesome';
+$background-color_1: #fff;
+$background-color_2: rgba(42, 42, 42, .97);
+$background-color_3: transparent;
+$background-color_4: #2a2a2a;
+$background-color_5: #f8f8f8;
+$background-color_6: rgba(0, 0, 0, 0.85);
+$background-color_7: #ffffff;
+$background-color_8: #eee;
+$background-color_9: rgba(0, 0, 0, 0.9);
+$border-color_1: #2a2a2a;
+
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+01. font & reset css
+02. reset
+03. global styles
+--------------------------------------------- */
+/*
+---------------------------------------------
+font & reset css
+---------------------------------------------
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900";
+
+/*
+---------------------------------------------
+reset
+---------------------------------------------
+*/
+@-webkit-keyframes jumper {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes jumper {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+---------------------------------------------
+global styles
+---------------------------------------------
+*/
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: $font-family_1;
+  font-weight: 400;
+  background-color: $background-color_1;
+  font-size: 16px;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: $font-family_1;
+  font-weight: 400;
+  background-color: $background-color_1;
+  font-size: 16px;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+
+  pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+  }
+}
+
+span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+h1 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+h2 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+h3 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+h4 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+h5 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+h6 {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  margin: 0 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  line-height: 25px;
+  color: $color_1;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none !important;
+}
+
+font {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+ol {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+ul {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+article {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+aside {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+#preloader {
+  overflow: hidden;
+  background-color: $background-color_4;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 99999;
+  color: $color_2;
+
+  .jumper {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+
+    > div {
+      background-color: $background-color_1;
+      border-radius: 100%;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      position: absolute;
+      opacity: 0;
+      width: 50px;
+      height: 50px;
+      -webkit-animation: jumper 1s 0s linear infinite;
+      animation: jumper 1s 0s linear infinite;
+
+      &:nth-child(2) {
+        -webkit-animation-delay: 0.33333s;
+        animation-delay: 0.33333s;
+      }
+
+      &:nth-child(3) {
+        -webkit-animation-delay: 0.66666s;
+        animation-delay: 0.66666s;
+      }
+    }
+  }
+}
+
+/*
+---------------------------------------------
+responsive
+---------------------------------------------
+*/
+@media (max-width: 991px) {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
