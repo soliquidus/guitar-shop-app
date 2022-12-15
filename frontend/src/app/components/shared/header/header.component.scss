@@ -1,15 +1,10 @@
-$color_1: #1e1e1e;
-$color_2: #2a2a2a;
-$color_3: #fff;
-$color_4: #aaa;
-$color_5: #191a20;
-$color_6: #3B566E;
-$font-family_1: 'Poppins', sans-serif;
-$font-family_2: 'FontAwesome';
-$background-color_1: #fff;
-$background-color_2: transparent;
-$background-color_3: #1e1e1e;
-$background-color_4: #f7f7f7;
+@import "../../../../styles";
+
+$color_01: #1e1e1e;
+$color_02: #191a20;
+$color_03: #3B566E;
+$background-color_01: #1e1e1e;
+$background-color_02: #f7f7f7;
 
 /*
 ---------------------------------------------
@@ -27,13 +22,13 @@ Header main style
   right: 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.15) !important;
   .logo {
-    color: $color_1 !important;
+    color: $color_01 !important;
   }
   .main-nav {
     .nav {
       li {
         a {
-          color: $color_1 !important;
+          color: $color_01 !important;
         }
         &:hover {
           a {
@@ -48,7 +43,7 @@ Header main style
       }
       li.submenu {
         &:after {
-          color: $color_2;
+          color: $color_1;
         }
       }
     }
@@ -58,22 +53,22 @@ Header main style
     .menu-trigger {
       top: 23px;
       span {
-        background-color: $background-color_3;
+        background-color: $background-color_01;
         &:before {
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
         &:after {
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
       }
     }
     .menu-trigger.active {
       span {
         &:before {
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
         &:after {
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
       }
     }
@@ -81,7 +76,7 @@ Header main style
   .nav {
     li {
       a.active {
-        color: $color_2 !important;
+        color: $color_1 !important;
       }
     }
     margin-top: 20px !important;
@@ -107,7 +102,7 @@ Header main style
     background: transparent;
     .logo {
       line-height: 100px;
-      color: $color_3;
+      color: $color_2;
       font-size: 28px;
       font-weight: 700;
       text-transform: uppercase;
@@ -122,7 +117,7 @@ Header main style
       float: right;
       margin-top: 30px;
       margin-right: 0;
-      background-color: $background-color_2;
+      background-color: $background-color_3;
       -webkit-transition: all 0.3s ease 0s;
       -moz-transition: all 0.3s ease 0s;
       -o-transition: all 0.3s ease 0s;
@@ -139,7 +134,7 @@ Header main style
           display: block;
           font-weight: 600;
           font-size: 15px;
-          color: $color_2;
+          color: $color_1;
           text-transform: capitalize;
           -webkit-transition: all 0.3s ease 0s;
           -moz-transition: all 0.3s ease 0s;
@@ -166,7 +161,7 @@ Header main style
           font-family: $font-family_2;
           content: "\f107";
           font-size: 12px;
-          color: $color_2;
+          color: $color_1;
           position: absolute;
           right: 18px;
           top: 12px;
@@ -190,7 +185,7 @@ Header main style
               opacity: 1;
               display: block;
               background: #f7f7f7;
-              color: $color_2 !important;
+              color: $color_1 !important;
               padding-left: 20px;
               height: 40px;
               line-height: 40px;
@@ -239,7 +234,7 @@ Header main style
         -o-transition: all 0.4s;
         -webkit-transition: all 0.4s;
         transition: all 0.4s;
-        background-color: $background-color_3;
+        background-color: $background-color_01;
         display: block;
         position: absolute;
         width: 30px;
@@ -251,7 +246,7 @@ Header main style
           -o-transition: all 0.4s;
           -webkit-transition: all 0.4s;
           transition: all 0.4s;
-          background-color: $background-color_3;
+          background-color: $background-color_01;
           display: block;
           position: absolute;
           width: 30px;
@@ -267,7 +262,7 @@ Header main style
           -o-transition: all 0.4s;
           -webkit-transition: all 0.4s;
           transition: all 0.4s;
-          background-color: $background-color_3;
+          background-color: $background-color_01;
           display: block;
           position: absolute;
           width: 30px;
@@ -282,19 +277,19 @@ Header main style
     }
     .menu-trigger.active {
       span {
-        background-color: $background-color_2;
+        background-color: $background-color_3;
         width: 100%;
         &:before {
           width: 100%;
           -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
           transform: translateY(6px) translateX(1px) rotate(45deg);
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
         &:after {
           width: 100%;
           -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
           transform: translateY(-6px) translateX(1px) rotate(-45deg);
-          background-color: $background-color_3;
+          background-color: $background-color_01;
         }
       }
     }
@@ -332,7 +327,7 @@ Header main style
   .header-area {
     .main-nav {
       .logo {
-        color: $color_1;
+        color: $color_01;
       }
       overflow: hidden;
       .nav {
@@ -359,7 +354,7 @@ Header main style
             padding: 0 !important;
             border: none !important;
             background: #f7f7f7 !important;
-            color: $color_5 !important;
+            color: $color_02 !important;
             &:hover {
               background: #eee !important;
               color: $color_4 !important;
@@ -394,7 +389,7 @@ Header main style
             height: auto !important;
           }
           &:after {
-            color: $color_6;
+            color: $color_03;
             right: 25px;
             font-size: 14px;
             top: 15px;
@@ -412,7 +407,7 @@ Header main style
         }
       }
     }
-    background-color: $background-color_4;
+    background-color: $background-color_02;
     padding: 0 15px;
     height: 100px;
     box-shadow: none;
