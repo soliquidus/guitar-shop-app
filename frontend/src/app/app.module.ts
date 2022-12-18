@@ -6,22 +6,28 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import {LogPublisherService} from "./services/logPublisher.service";
+import {LogService} from "./services/log.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent
   ],
-  providers: [],
+  providers: [LogService, LogPublisherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
