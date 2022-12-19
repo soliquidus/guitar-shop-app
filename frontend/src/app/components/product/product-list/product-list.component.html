@@ -1,1 +1,70 @@
-<p>product-list works!</p>
+<!-- ***** Main Banner Area Start ***** -->
+<div class="page-heading"
+     [ngStyle]="{'background-image':
+     previousCategoryId === 1 ? imageUrls[1] :
+     previousCategoryId === 2 ? imageUrls[2] :
+     previousCategoryId === 3 ? imageUrls[3] :
+     previousCategoryId === 4 ? imageUrls[4] :
+     imageUrls [0]}"
+     id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="inner-content guitar" *ngIf="currentCategoryId === 1">
+          <h2>Electric Guitars</h2>
+          <span>Check out all of our electric guitars!</span>
+        </div>
+        <div class="inner-content acoustic" *ngIf="currentCategoryId === 2">
+          <h2>Acoustic Guitars</h2>
+          <span>Check out all of our acoustic guitars!</span>
+        </div>
+        <div class="inner-content bass" *ngIf="currentCategoryId === 3">
+          <h2>Bass Guitars</h2>
+          <span>Check out all of our bass guitars!</span>
+        </div>
+        <div class="inner-content bass" *ngIf="currentCategoryId === 4">
+          <h2>Accessories</h2>
+          <span>Check out all of our cool accessories!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Products Area Starts ***** -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading">
+          <h2>Electric Guitars</h2>
+          <span>Check out all of our electric Guitars.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let product of products">
+        <div class="item">
+          <div class="thumb">
+            <div class="hover-content">
+              <ul>
+                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div>
+            <img src="{{product.imageUrl}}" alt="product-photo">
+          </div>
+          <div class="down-content">
+            <h4>{{product.name}}</h4>
+            <span>{{product.unitPrice | currency: 'USD'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

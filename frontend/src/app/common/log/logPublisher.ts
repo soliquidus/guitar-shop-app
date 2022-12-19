@@ -30,7 +30,7 @@ export class LogLocalStorage extends LogPublisher {
     super();
 
     // Set location
-    this.location = "logging";
+    this.location = 'logging';
   }
 
   // Append log entry to local storage
@@ -69,11 +69,12 @@ export class LogServerSide extends LogPublisher {
 
   constructor(private httpClient: HttpClient, private logUrl: string) {
     super();
+    this.location = 'logging';
   }
 
   log(record: LogEntry): Observable<boolean> {
     let ret: boolean = false;
-    let values: LogEntry[] = [];
+    let values = JSON.parse(localStorage.getItem(this.location)!) || [];
     try {
       values.push(record);
 

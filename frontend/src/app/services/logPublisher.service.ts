@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {LogConsole, LogPublisher, LogLocalStorage, LogServerSide} from "../common/log/logPublisher";
+import {Injectable} from '@angular/core';
+import {LogConsole, LogLocalStorage, LogPublisher, LogServerSide} from "../common/log/logPublisher";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 

@@ -6,10 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.pazdev.guitarshop.entity.ClientLogEntry;
 import com.pazdev.guitarshop.utils.FileHandling;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -19,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+@CrossOrigin()
 @RestController
 @RequestMapping("/api/log")
 public class ClientLogController {
@@ -28,6 +26,20 @@ public class ClientLogController {
     private final FileHandling fileHandling = new FileHandling();
 
     @PostMapping
+    public void getLogFromLocalStorage(@RequestBody ClientLogEntry[] logEntries){
+        Type listType = new TypeToken<List<ClientLogEntry>>() {
+        }.getType();
+
+        for (ClientLogEntry log : logEntries) {
+            log.setLogLevel(log.getLogLevel());
+        }
+        String logJson = gson.toJson(logEntries);
+        List<ClientLogEntry> existingLogList = gson.fromJson(logJson, listType);
+
+        fileHandling.initBufferedWriter(fileName, existingLogList);
+
+    }
+
     public void getLog(@RequestBody ClientLogEntry[] logEntry) {
         Path path = Paths.get(fileName);
         Type listType = new TypeToken<List<ClientLogEntry>>() {
@@ -39,10 +51,8 @@ public class ClientLogController {
             log.setLogLevel(log.getLogLevel());
         }
         String logJson = gson.toJson(logEntry);
-
         try {
             List<ClientLogEntry> comingLogList = gson.fromJson(logJson, listType);
-
             if (exists) {
                 Reader existingFile = Files.newBufferedReader(Paths.get(fileName));
 

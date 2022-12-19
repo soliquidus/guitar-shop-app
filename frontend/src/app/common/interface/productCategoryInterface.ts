@@ -1,6 +1,6 @@
 import {ProductCategory} from "../entity/productCategory";
 
-export interface CategoryInterface {
+export interface ProductCategoryInterface {
   _embedded: {
     productCategory: ProductCategory[];
   }
