@@ -20,68 +20,84 @@ Header main style
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15) !important;
+
   .logo {
     color: $color_01 !important;
   }
+
   .main-nav {
     .nav {
+
       li {
         a {
           color: $color_01 !important;
         }
+
         &:hover {
           a {
             color: $color_4 !important;
             opacity: 1;
           }
         }
+
         a.active {
           color: $color_4 !important;
           opacity: 1;
         }
       }
+
       li.submenu {
         &:after {
           color: $color_1;
         }
       }
     }
+
     .logo {
       line-height: 75px;
     }
+
     .menu-trigger {
       top: 23px;
+
       span {
         background-color: $background-color_01;
+
         &:before {
           background-color: $background-color_01;
         }
+
         &:after {
           background-color: $background-color_01;
         }
       }
     }
+
     .menu-trigger.active {
       span {
         &:before {
           background-color: $background-color_01;
         }
+
         &:after {
           background-color: $background-color_01;
         }
       }
     }
   }
+
   .nav {
     li {
       a.active {
         color: $color_1 !important;
       }
     }
+
     margin-top: 20px !important;
   }
 }
+
 .header-area {
   font-family: $font-family_1;
   border-bottom: 3px dotted #eee;
@@ -97,9 +113,11 @@ Header main style
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
   transition: all .5s ease 0s;
+
   .main-nav {
     min-height: 80px;
     background: transparent;
+
     .logo {
       line-height: 100px;
       color: $color_2;
@@ -113,6 +131,7 @@ Header main style
       -o-transition: all 0.3s ease 0s;
       transition: all 0.3s ease 0s;
     }
+
     .nav {
       float: right;
       margin-top: 30px;
@@ -124,12 +143,15 @@ Header main style
       transition: all 0.3s ease 0s;
       position: relative;
       z-index: 999;
+
       li {
         padding-left: 15px;
         padding-right: 15px;
+
         &:last-child {
           padding-right: 0;
         }
+
         a {
           display: block;
           font-weight: 600;
@@ -145,18 +167,22 @@ Header main style
           border: transparent;
           letter-spacing: 1px;
         }
+
         &:hover {
           a {
             color: $color_4 !important;
           }
         }
+
         a.active {
           color: $color_4 !important;
         }
       }
+
       li.submenu {
         position: relative;
         padding-right: 30px;
+
         &:after {
           font-family: $font-family_2;
           content: "\f107";
@@ -166,6 +192,7 @@ Header main style
           right: 18px;
           top: 12px;
         }
+
         ul {
           position: absolute;
           width: 200px;
@@ -177,10 +204,12 @@ Header main style
           visibility: hidden;
           z-index: -1;
           transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+
           li {
             margin-left: 0;
             padding-left: 0;
             padding-right: 0;
+
             a {
               opacity: 1;
               display: block;
@@ -197,10 +226,12 @@ Header main style
               font-size: 13px;
               font-weight: 400;
               border-bottom: 1px solid #eee;
+
               &:hover {
                 background: #fff;
                 color: $color_4 !important;
                 padding-left: 25px;
+
                 &:before {
                   width: 3px;
                 }
@@ -208,6 +239,7 @@ Header main style
             }
           }
         }
+
         &:hover {
           ul {
             visibility: visible;
@@ -219,6 +251,7 @@ Header main style
         }
       }
     }
+
     .menu-trigger {
       cursor: pointer;
       position: absolute;
@@ -229,6 +262,7 @@ Header main style
       z-index: 99;
       right: 40px;
       display: none;
+
       span {
         -moz-transition: all 0.4s;
         -o-transition: all 0.4s;
@@ -241,6 +275,7 @@ Header main style
         height: 2px;
         left: 0;
         top: 16px;
+
         &:before {
           -moz-transition: all 0.4s;
           -o-transition: all 0.4s;
@@ -258,6 +293,7 @@ Header main style
           top: -10px;
           z-index: 10;
         }
+
         &:after {
           -o-transition: all 0.4s;
           -webkit-transition: all 0.4s;
@@ -275,16 +311,19 @@ Header main style
         }
       }
     }
+
     .menu-trigger.active {
       span {
         background-color: $background-color_3;
         width: 100%;
+
         &:before {
           width: 100%;
           -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
           transform: translateY(6px) translateX(1px) rotate(45deg);
           background-color: $background-color_01;
         }
+
         &:after {
           width: 100%;
           -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
@@ -294,12 +333,15 @@ Header main style
       }
     }
   }
+
   .nav {
     margin-top: 30px;
   }
 }
+
 .header-area.header-sticky {
   min-height: 80px;
+
   .nav {
     li {
       a.active {
@@ -308,6 +350,7 @@ Header main style
     }
   }
 }
+
 @media (max-width: 1200px) {
   .header-area {
     .main-nav {
@@ -317,19 +360,23 @@ Header main style
           padding-right: 12px;
         }
       }
+
       &:before {
         display: none;
       }
     }
   }
 }
+
 @media (max-width: 767px) {
   .header-area {
     .main-nav {
       .logo {
         color: $color_01;
       }
+
       overflow: hidden;
+
       .nav {
         float: none;
         width: 100%;
@@ -339,15 +386,18 @@ Header main style
         -o-transition: all 0s ease 0s;
         transition: all 0s ease 0s;
         margin-left: 0;
+
         li {
           &:first-child {
             border-top: 1px solid #eee;
           }
+
           width: 100%;
           background: #fff;
           border-bottom: 1px solid #eee;
           padding-left: 0 !important;
           padding-right: 0 !important;
+
           a {
             height: 50px !important;
             line-height: 50px !important;
@@ -355,12 +405,14 @@ Header main style
             border: none !important;
             background: #f7f7f7 !important;
             color: $color_02 !important;
+
             &:hover {
               background: #eee !important;
               color: $color_4 !important;
             }
           }
         }
+
         li.submenu {
           ul {
             position: relative;
@@ -373,10 +425,12 @@ Header main style
             width: 100%;
             box-shadow: none;
             height: 0;
+
             li {
               a {
                 font-size: 12px;
                 font-weight: 400;
+
                 &:hover {
                   &:before {
                     width: 0;
@@ -385,20 +439,24 @@ Header main style
               }
             }
           }
+
           ul.active {
             height: auto !important;
           }
+
           &:after {
             color: $color_03;
             right: 25px;
             font-size: 14px;
             top: 15px;
           }
+
           &:hover {
             ul {
               height: 0;
             }
           }
+
           &:focus {
             ul {
               height: 0;
@@ -407,17 +465,21 @@ Header main style
         }
       }
     }
+
     background-color: $background-color_02;
     padding: 0 15px;
     height: 100px;
     box-shadow: none;
     text-align: center;
+
     .container {
       padding: 0;
     }
+
     .logo {
       margin-left: 30px;
     }
+
     .menu-trigger {
       display: block !important;
     }
@@ -431,20 +493,24 @@ Header main style
             opacity: 1;
           }
         }
+
         a.active {
           color: $color_4 !important;
           opacity: 1;
         }
       }
+
       li.search-icon {
         a {
           width: 100%;
         }
       }
+
       margin-top: 100px !important;
     }
   }
 }
+
 @media (min-width: 767px) {
   .header-area {
     .main-nav {
@@ -466,15 +532,19 @@ Header responsiveness
       .nav {
         animation: rotateMenu 400ms ease-in-out forwards;
         transform-origin: top center;
+
         li.submenu {
           &:after {
             right: 3px;
           }
+
           padding-right: 15px;
         }
+
         li {
           padding-right: 5px;
           padding-left: 5px;
+
           a {
             font-size: 14px;
             letter-spacing: 0;
@@ -496,6 +566,7 @@ Header responsiveness
     transform: rotateX(0deg);
   }
 }
+
 @-webkit-keyframes rotateMenu {
   0% {
     transform: rotateX(-90deg);
@@ -507,6 +578,7 @@ Header responsiveness
     transform: rotateX(0deg);
   }
 }
+
 @-o-keyframes rotateMenu {
   0% {
     transform: rotateX(-90deg);
@@ -518,6 +590,7 @@ Header responsiveness
     transform: rotateX(0deg);
   }
 }
+
 @keyframes rotateMenu {
   0% {
     transform: rotateX(-90deg);

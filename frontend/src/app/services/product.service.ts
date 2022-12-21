@@ -5,6 +5,7 @@ import {map, Observable} from "rxjs";
 import {ProductInterface} from "../common/interface/productInterface";
 import {LogService} from "./log.service";
 import {ProductCategoryInterface} from "../common/interface/productCategoryInterface";
+import {Product} from "../common/entity/product";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,32 @@ export class ProductService {
     return this.httpClient.get<ProductCategoryInterface>(this.categoryUrl).pipe(
       map(response => response._embedded.productCategory)
     );
+  }
+
+  searchProducts(keyword: string): Observable<Product[]> {
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
+    console.log(searchUrl)
+
+    return this.getProducts(searchUrl);
+  }
+
+  searchProductsWithPagination(page: number, pageSize: number, keyword: string): Observable<ProductInterface> {
+    // build URL based on category id, page and size
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?=name=${keyword}&page=${page}&size=${pageSize}`;
+
+    return this.httpClient.get<ProductInterface>(searchUrl);
+  }
+
+  private getProducts(searchUrl: string) {
+    return this.httpClient.get<ProductInterface>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
+
+  getProductList(categoryId: number): Observable<Product[]> {
+    // need to build URL based on category id
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}`;
+
+    return this.getProducts(searchUrl);
   }
 }

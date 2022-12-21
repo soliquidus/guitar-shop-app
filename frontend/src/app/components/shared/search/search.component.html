@@ -1,0 +1,12 @@
+<div class="wrap">
+  <div class="search">
+    <input #myInput type="text"
+           class="searchTerm"
+           placeholder="Search for products ..."
+           (keyup.enter)="doSearch(myInput.value)"
+    />
+    <button (click)="doSearch(myInput.value)" class="searchButton">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>

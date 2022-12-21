@@ -18,6 +18,7 @@
                 {{productCategory.categoryName}}
               </a>
             </li>
+            <li><app-search></app-search></li>
           </ul>
           <a [className]="dropMenu ? 'menu-trigger active' : 'menu-trigger'"
              (click)="dropMenu = !dropMenu"

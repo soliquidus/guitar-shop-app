@@ -10,13 +10,15 @@ import { ProductListComponent } from './components/product/product-list/product-
 import {LogPublisherService} from "./services/logPublisher.service";
 import {LogService} from "./services/log.service";
 import {HttpClientModule} from "@angular/common/http";
+import { SearchComponent } from './components/shared/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

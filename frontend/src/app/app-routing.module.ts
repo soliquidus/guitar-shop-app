@@ -4,10 +4,11 @@ import {HomeComponent} from "./components/home/home.component";
 import {ProductListComponent} from "./components/product/product-list/product-list.component";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
+  {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
