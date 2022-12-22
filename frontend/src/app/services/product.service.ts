@@ -41,7 +41,7 @@ export class ProductService {
 
   searchProductsWithPagination(page: number, pageSize: number, keyword: string): Observable<ProductInterface> {
     // build URL based on category id, page and size
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?=name=${keyword}&page=${page}&size=${pageSize}`;
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}&page=${page}&size=${pageSize}`;
 
     return this.httpClient.get<ProductInterface>(searchUrl);
   }
