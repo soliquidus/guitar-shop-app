@@ -11,6 +11,7 @@ import {LogPublisherService} from "./services/logPublisher.service";
 import {LogService} from "./services/log.service";
 import {HttpClientModule} from "@angular/common/http";
 import { SearchComponent } from './components/shared/search/search.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchComponent } from './components/shared/search/search.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   exports: [
     HeaderComponent

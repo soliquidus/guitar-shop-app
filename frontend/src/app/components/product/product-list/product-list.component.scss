@@ -6,8 +6,6 @@ $background-color_1: #fff;
 $background-color_4: #2a2a2a;
 
 
-
-
 .page-heading {
   font-family: 'Poppins', sans-serif;
   margin-top: 160px;
@@ -48,13 +46,16 @@ Products Page
     margin-bottom: 60px;
     margin-top: 80px;
   }
+
   .item {
     margin-bottom: 30px;
+
     .thumb {
       img {
         width: 100%;
         overflow: hidden;
       }
+
       .hover-content {
         position: absolute;
         z-index: 2;
@@ -64,10 +65,12 @@ Products Page
         opacity: 0;
         visibility: hidden;
         transition: all .5s;
+
         ul {
           li {
             display: inline;
             margin: 0 10px;
+
             a {
               width: 50px;
               height: 50px;
@@ -80,6 +83,7 @@ Products Page
           }
         }
       }
+
       &:hover {
         .hover-content {
           bottom: 30px;
@@ -87,29 +91,35 @@ Products Page
           visibility: visible;
         }
       }
+
       position: relative;
     }
+
     .down-content {
       padding-top: 20px;
       position: relative;
       z-index: 3;
       background-color: $background-color_1;
+
       h4 {
         font-size: 22px;
         color: $color_1;
         font-weight: 700;
         margin-bottom: 8px;
       }
+
       span {
         font-size: 18px;
         color: $color_3;
         font-weight: 500;
         display: block;
       }
+
       ul.stars {
         position: absolute;
         right: 0;
         top: 20px;
+
         li {
           display: inline;
           font-size: 13px;
@@ -117,38 +127,56 @@ Products Page
       }
     }
   }
-  .pagination {
-    margin-top: 30px;
-    margin-bottom: 40px;
-    ul {
-      text-align: center;
-      width: 100%;
-      li {
-        display: inline;
-        margin: 0 5px;
-        a {
-          width: 44px;
-          height: 44px;
-          border: 1px solid #2a2a2a;
-          display: inline-block;
-          text-align: center;
-          line-height: 44px;
-          font-size: 14px;
-          font-weight: 500;
-          color: $color_1;
-          &:hover {
-            background-color: $background-color_4;
-            color: $color_2;
-          }
-        }
-      }
-      li.active {
-        a {
-          background-color: $background-color_4;
-          color: $color_2;
-        }
-      }
-    }
-  }
 }
+
+ngb-pagination {
+  text-align: center;
+  align-content: center;
+  margin: auto;
+  //width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+//
+//.pagination .page-item.active .page-link {
+//  text-align: center;
+//  margin-top: 30px;
+//  margin-bottom: 40px;
+//
+//  ul {
+//    text-align: center;
+//    width: 100%;
+//
+//    li {
+//      display: inline;
+//      margin: 0 5px;
+//
+//      a {
+//        width: 44px;
+//        height: 44px;
+//        border: 1px solid #2a2a2a;
+//        display: inline-block;
+//        text-align: center;
+//        line-height: 44px;
+//        font-size: 14px;
+//        font-weight: 500;
+//        color: $color_1;
+//        background-color: #1e1e1e;
+//
+//        &:hover {
+//          background-color: $background-color_4;
+//          color: $color_2;
+//        }
+//      }
+//    }
+//
+//    li.active {
+//      a {
+//        background-color: $background-color_4;
+//        color: $color_2;
+//      }
+//    }
+//  }
+//}
+
 

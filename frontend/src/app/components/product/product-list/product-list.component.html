@@ -73,6 +73,18 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-12">
+        <div class="pagination">
+              <ngb-pagination
+                [(page)]="pageNumber"
+                [pageSize]="pageSize"
+                [collectionSize]="totalElements"
+                [maxSize]="5"
+                [boundaryLinks]="false"
+                (pageChange)="listProducts()">
+              </ngb-pagination>
+        </div>
+      </div>
     </div>
   </div>
 </section>
