@@ -10,11 +10,15 @@
           </a>
           <!-- ***** Menu ***** -->
           <ul class="nav" [ngStyle]="{'display': dropMenu ? 'block' : ''}">
-            <li class="scroll-to-section"><a href="#" class="active">Home</a></li>
-            <li class="scroll-to-section"><a href="#">Electric Guitars</a></li>
-            <li class="scroll-to-section"><a href="#">Acoustic Guitars</a></li>
-            <li class="scroll-to-section"><a href="#">Bass Guitars</a></li>
-            <li class="scroll-to-section"><a href="#">Accessories</a></li>
+            <li class="scroll-to-section">
+              <a routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li *ngFor="let productCategory of productCategories" class="scroll-to-section">
+              <a routerLink="/category/{{productCategory.id}}" routerLinkActive="active">
+                {{productCategory.categoryName}}
+              </a>
+            </li>
+            <li><app-search></app-search></li>
           </ul>
           <a [className]="dropMenu ? 'menu-trigger active' : 'menu-trigger'"
              (click)="dropMenu = !dropMenu"
