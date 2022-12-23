@@ -1,0 +1,43 @@
+<!-- ***** Main Banner Area Start ***** -->
+<div class="page-heading"
+     [ngStyle]="{'background-image':
+     searchMode ? imageUrls[0] :
+     productView ? imageUrls[0] :
+     currentCategory === 1 ? imageUrls[1] :
+     currentCategory === 2 ? imageUrls[2] :
+     currentCategory === 3 ? imageUrls[3] :
+     currentCategory === 4 ? imageUrls[4] :
+     imageUrls[0]}"
+     id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="inner-content guitar" *ngIf="searchMode">
+          <h2>Search a product</h2>
+          <span>Hop you'll find what you want!</span>
+        </div>
+        <div class="inner-content guitar" *ngIf="productView">
+          <h2>Product details</h2>
+          <span>What's that thing all about?</span>
+        </div>
+        <div class="inner-content guitar" *ngIf="currentCategory === 1 && !searchMode">
+          <h2>Electric Guitars</h2>
+          <span>Make the amp scream!</span>
+        </div>
+        <div class="inner-content acoustic" *ngIf="currentCategory === 2 && !searchMode">
+          <h2>Acoustic Guitars</h2>
+          <span>For the best musical moments including a camp fire</span>
+        </div>
+        <div class="inner-content bass" *ngIf="currentCategory === 3 && !searchMode">
+          <h2>Bass Guitars</h2>
+          <span>Let's get groovy!</span>
+        </div>
+        <div class="inner-content bass" *ngIf="currentCategory === 4 && !searchMode">
+          <h2>Accessories</h2>
+          <span>At some moment, you'll need them!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->

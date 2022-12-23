@@ -2,38 +2,10 @@ $color_1: #2a2a2a;
 $color_2: #fff;
 $color_3: #a1a1a1;
 
+
 $background-color_1: #fff;
+$background-color_2: #c40b2b;
 $background-color_4: #2a2a2a;
-
-
-.page-heading {
-  font-family: 'Poppins', sans-serif;
-  margin-top: 160px;
-  margin-bottom: 30px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-
-  .inner-content {
-    padding: 150px 0;
-    text-align: center;
-
-    h2 {
-      font-size: 52px;
-      color: $color_2;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    span {
-      font-size: 16px;
-      font-weight: 500;
-      color: $color_2;
-      font-style: italic;
-    }
-  }
-}
 
 /*
 ---------------------------------------------
@@ -129,52 +101,31 @@ Products Page
   }
 }
 
-ngb-pagination {
+//ngb-pagination {
+//  text-align: center;
+//  align-content: center;
+//  margin: auto;
+//  //width: 50%;
+//  padding: 10px;
+//}
+
+ngb-pagination ::ng-deep {
   text-align: center;
   align-content: center;
   margin: auto;
   //width: 50%;
   padding: 10px;
-}
 
-.pagination .page-item.active .page-link {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem $color_1;
+  }
+  .page-item.active > .page-link{
+    background-color: $background-color_2;
+    border-color: $background-color_2;
+  }
 
-  ul {
-    text-align: center;
-    width: 100%;
-
-    li {
-      display: inline;
-      margin: 0 5px;
-
-      a {
-        width: 44px;
-        height: 44px;
-        border: 1px solid #2a2a2a;
-        display: inline-block;
-        text-align: center;
-        line-height: 44px;
-        font-size: 14px;
-        font-weight: 500;
-        color: $color_1;
-        background-color: #1e1e1e;
-
-        &:hover {
-          background-color: $background-color_4;
-          color: $color_2;
-        }
-      }
-    }
-
-    li.active {
-      a {
-        background-color: $background-color_4;
-        color: $color_2;
-      }
-    }
+  .page-item:not(.active) .page-link {
+    color: #1e1e1e;
   }
 }
 
