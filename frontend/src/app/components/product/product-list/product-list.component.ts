@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
   searchMode: boolean = false;
+  allProducts: boolean = false;
   imageUrls: string[] = [];
 
   // pagination
@@ -47,15 +48,16 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe({
-      next: () => this.listProducts(),
-      error: err => this.logger.error('Product list initialization', err),
-      complete: () => this.logger.info('Product list fetch success')
-    });
+       this.route.params.subscribe({
+         next: () => this.listProducts(),
+         error: err => this.logger.error('Product list initialization', err),
+         complete: () => this.logger.info('Product list fetch success')
+       });
   }
 
   listProducts() {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    this.allProducts = this.router.url.includes('products');
 
     if (this.searchMode) {
       this.handleSearchProducts();
@@ -68,7 +70,7 @@ export class ProductListComponent implements OnInit {
     const keyword: string = this.route.snapshot.paramMap.get('keyword')!;
 
     // if keyword different from previous, page number set to 1
-    if(this.previousKeyword != keyword) {
+    if (this.previousKeyword != keyword) {
       this.pageNumber = 1;
     }
 
@@ -82,28 +84,33 @@ export class ProductListComponent implements OnInit {
 
   handleListProducts() {
 
-    // check if "id" parameter is available
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-
-    if (hasCategoryId) {
-      // get the "id" param string and convert string to a number using the "+" symbol
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+    if(this.allProducts) {
+      this.productService.getAllProductsWithPagination(this.pageNumber -1, this.pageSize)
+        .subscribe(this.processResult())
     } else {
-      // no category id available so default id to 1
-      this.currentCategoryId = 1;
+      // check if "id" parameter is available
+      const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+      if (hasCategoryId) {
+        // get the "id" param string and convert string to a number using the "+" symbol
+        this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+      } else {
+        // no category id available so default id to 1
+        this.currentCategoryId = 1;
+      }
+
+      // return to page 1 if category change
+      if (this.previousCategoryId != this.currentCategoryId) {
+        this.pageNumber = 1;
+      }
+
+      this.previousCategoryId = this.currentCategoryId;
+      this.logger.debug('currentCategoryId | pageNumber', `${this.currentCategoryId} | ${this.pageNumber}`)
+
+      // get products for given category id
+      this.productService.getProductListWithPagination(this.pageNumber - 1, this.pageSize, this.currentCategoryId)
+        .subscribe(this.processResult());
     }
-
-    // return to page 1 if category change
-    if(this.previousCategoryId != this.currentCategoryId) {
-      this.pageNumber = 1;
-    }
-
-    this.previousCategoryId = this.currentCategoryId;
-    this.logger.debug('currentCategoryId | pageNumber', `${this.currentCategoryId} | ${this.pageNumber}`)
-
-    // get products for given category id
-    this.productService.getProductListWithPagination(this.pageNumber - 1, this.pageSize, this.currentCategoryId)
-      .subscribe(this.processResult());
   }
 
   updateSizePage(value: string) {

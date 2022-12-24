@@ -101,14 +101,6 @@ Products Page
   }
 }
 
-//ngb-pagination {
-//  text-align: center;
-//  align-content: center;
-//  margin: auto;
-//  //width: 50%;
-//  padding: 10px;
-//}
-
 ngb-pagination ::ng-deep {
   text-align: center;
   align-content: center;
@@ -116,7 +108,7 @@ ngb-pagination ::ng-deep {
   //width: 50%;
   padding: 10px;
 
-  .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+  .page-item .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
     box-shadow: 0 0 0 0.1rem $color_1;
   }
   .page-item.active > .page-link{

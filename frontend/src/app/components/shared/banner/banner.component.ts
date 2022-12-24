@@ -9,6 +9,7 @@ const GUITARS_URL = `url(${IMAGE_URL}guitar-banner.png)`;
 const ACOUSTICS_URL = `url(${IMAGE_URL}acoustic-banner.png)`;
 const BASS_URL = `url(${IMAGE_URL}bass-banner.png)`;
 const ACCESSORY_URL = `url(${IMAGE_URL}accessories-banner.png)`;
+const PRODUCT_DETAILS_URL = `url(${IMAGE_URL}product-details-banner.png)`;
 
 @Component({
   selector: 'app-banner',
@@ -19,16 +20,26 @@ export class BannerComponent implements OnInit {
 
   searchMode: boolean = false;
   productView: boolean = false;
-  imageUrls: string[] = [PRODUCTS_URL, GUITARS_URL, ACOUSTICS_URL, BASS_URL, ACCESSORY_URL]
+  allProductsView: boolean = false;
+  imageUrls: string[] = [
+    PRODUCTS_URL,
+    GUITARS_URL,
+    ACOUSTICS_URL,
+    BASS_URL,
+    ACCESSORY_URL,
+    PRODUCT_DETAILS_URL
+  ]
   currentCategory: number = 0;
 
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    this.allProductsView = this.router.url.includes('products') && !this.route.snapshot.paramMap.has('id');
+    this.productView = this.router.url.includes('products') && this.route.snapshot.paramMap.has('id');
+
     this.route.params.subscribe(() => {
-      this.searchMode = this.route.snapshot.paramMap.has('keyword');
-      this.productView = this.router.url.includes('products');
       if(this.route.snapshot.paramMap.has('id') && !this.router.url.includes('products')){
         this.currentCategory = +this.route.snapshot.paramMap.get('id')!;
       }

@@ -2,7 +2,8 @@
 <div class="page-heading"
      [ngStyle]="{'background-image':
      searchMode ? imageUrls[0] :
-     productView ? imageUrls[0] :
+     allProductsView ? imageUrls[0] :
+     productView ? imageUrls[this.imageUrls.length -1] :
      currentCategory === 1 ? imageUrls[1] :
      currentCategory === 2 ? imageUrls[2] :
      currentCategory === 3 ? imageUrls[3] :
@@ -19,6 +20,10 @@
         <div class="inner-content guitar" *ngIf="productView">
           <h2>Product details</h2>
           <span>What's that thing all about?</span>
+        </div>
+        <div class="inner-content guitar" *ngIf="allProductsView">
+          <h2>All our products</h2>
+          <span>Well, good luck with choosing among all the stuff we have!</span>
         </div>
         <div class="inner-content guitar" *ngIf="currentCategory === 1 && !searchMode">
           <h2>Electric Guitars</h2>
