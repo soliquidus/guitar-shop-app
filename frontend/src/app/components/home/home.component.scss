@@ -1,8 +1,7 @@
-$color_2: #fff;
-$background-color_2: rgba(42, 42, 42, .97);
+@import "../../../colors";
 
 .main-banner {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family_1;
   border-bottom: 3px dotted #eee;
   padding-top: 160px;
   padding-bottom: 30px;

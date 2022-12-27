@@ -1,11 +1,5 @@
 @import "../../../../styles";
 
-$color_01: #1e1e1e;
-$color_02: #191a20;
-$color_03: #3B566E;
-$background-color_01: #1e1e1e;
-$background-color_02: #f7f7f7;
-
 /*
 ---------------------------------------------
 Header main style
@@ -23,7 +17,7 @@ Header main style
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15) !important;
 
   .logo {
-    color: $color_01 !important;
+    color: $color_1 !important;
   }
 
   .main-nav {
@@ -31,7 +25,7 @@ Header main style
 
       li {
         a {
-          color: $color_01 !important;
+          color: $color_1 !important;
         }
 
         &:hover {
@@ -62,14 +56,14 @@ Header main style
       top: 23px;
 
       span {
-        background-color: $background-color_01;
+        background-color: $background-color_6;
 
         &:before {
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
 
         &:after {
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
       }
     }
@@ -77,11 +71,11 @@ Header main style
     .menu-trigger.active {
       span {
         &:before {
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
 
         &:after {
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
       }
     }
@@ -268,7 +262,7 @@ Header main style
         -o-transition: all 0.4s;
         -webkit-transition: all 0.4s;
         transition: all 0.4s;
-        background-color: $background-color_01;
+        background-color: $background-color_6;
         display: block;
         position: absolute;
         width: 30px;
@@ -281,7 +275,7 @@ Header main style
           -o-transition: all 0.4s;
           -webkit-transition: all 0.4s;
           transition: all 0.4s;
-          background-color: $background-color_01;
+          background-color: $background-color_6;
           display: block;
           position: absolute;
           width: 30px;
@@ -298,7 +292,7 @@ Header main style
           -o-transition: all 0.4s;
           -webkit-transition: all 0.4s;
           transition: all 0.4s;
-          background-color: $background-color_01;
+          background-color: $background-color_6;
           display: block;
           position: absolute;
           width: 30px;
@@ -321,14 +315,14 @@ Header main style
           width: 100%;
           -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
           transform: translateY(6px) translateX(1px) rotate(45deg);
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
 
         &:after {
           width: 100%;
           -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
           transform: translateY(-6px) translateX(1px) rotate(-45deg);
-          background-color: $background-color_01;
+          background-color: $background-color_6;
         }
       }
     }
@@ -372,7 +366,7 @@ Header main style
   .header-area {
     .main-nav {
       .logo {
-        color: $color_01;
+        color: $color_1;
       }
 
       overflow: hidden;
@@ -404,7 +398,7 @@ Header main style
             padding: 0 !important;
             border: none !important;
             background: #f7f7f7 !important;
-            color: $color_02 !important;
+            color: $color_1 !important;
 
             &:hover {
               background: #eee !important;
@@ -445,7 +439,7 @@ Header main style
           }
 
           &:after {
-            color: $color_03;
+            color: $color_8;
             right: 25px;
             font-size: 14px;
             top: 15px;
@@ -466,7 +460,7 @@ Header main style
       }
     }
 
-    background-color: $background-color_02;
+    background-color: $background-color_1;
     padding: 0 15px;
     height: 100px;
     box-shadow: none;

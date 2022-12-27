@@ -14,6 +14,7 @@ import {SearchComponent} from './components/shared/search/search.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BannerComponent } from './components/shared/banner/banner.component';
     ProductListComponent,
     SearchComponent,
     ProductDetailsComponent,
-    BannerComponent
+    BannerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

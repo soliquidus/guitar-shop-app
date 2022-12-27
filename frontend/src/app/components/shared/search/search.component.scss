@@ -1,6 +1,4 @@
-$color_1: black;
-$color_2: #c40b2b;
-$color_3: #fff;
+@import "../../../../colors";
 
 /*Resize the wrap to see the search bar change!*/
 .search {
@@ -21,7 +19,7 @@ $color_3: #fff;
   font-size: 13px;
 
   &:focus {
-    color: $color_2;
+    color: $color_9;
   }
 }
 
@@ -31,7 +29,7 @@ $color_3: #fff;
   border: 1px solid #c40b2b;
   background: #c40b2b;
   text-align: center;
-  color: $color_3;
+  color: $color_2;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 15px;

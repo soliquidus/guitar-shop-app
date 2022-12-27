@@ -1,11 +1,4 @@
-$color_1: #2a2a2a;
-$color_2: #fff;
-$color_3: #a1a1a1;
-
-
-$background-color_1: #fff;
-$background-color_2: #c40b2b;
-$background-color_4: #2a2a2a;
+@import "../../../../colors";
 
 /*
 ---------------------------------------------
@@ -112,8 +105,8 @@ ngb-pagination ::ng-deep {
     box-shadow: 0 0 0 0.1rem $color_1;
   }
   .page-item.active > .page-link{
-    background-color: $background-color_2;
-    border-color: $background-color_2;
+    background-color: $background-color_9;
+    border-color: $background-color_9;
   }
 
   .page-item:not(.active) .page-link {
