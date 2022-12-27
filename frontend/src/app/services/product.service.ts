@@ -18,10 +18,16 @@ export class ProductService {
   constructor(private httpClient: HttpClient, private logger: LogService) {
   }
 
-  getProductListWithPagination(page: number, pageSize: number, categoryId: number): Observable<ProductInterface> {
+  getAllProductsWithPagination(page: number, pageSize: number): Observable<ProductInterface> {
+    const url = `${this.baseUrl}?page=${page}&size=${pageSize}`;
+    this.logger.debug('Getting all products from', url);
 
+    return this.httpClient.get<ProductInterface>(url);
+  }
+
+  getProductListWithPagination(page: number, pageSize: number, categoryId: number): Observable<ProductInterface> {
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
-    this.logger.debug('Getting products from', `${searchUrl}`)
+    this.logger.debug('Getting products from', searchUrl);
 
     return this.httpClient.get<ProductInterface>(searchUrl);
   }
@@ -50,6 +56,12 @@ export class ProductService {
     return this.httpClient.get<ProductInterface>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
+  }
+
+  getProduct(productId: number): Observable<Product> {
+    const productUrl = `${this.baseUrl}/${productId}`;
+
+    return this.httpClient.get<Product>(productUrl);
   }
 
   getProductList(categoryId: number): Observable<Product[]> {

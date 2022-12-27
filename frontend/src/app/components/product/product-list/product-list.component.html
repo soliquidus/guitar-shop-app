@@ -1,41 +1,6 @@
-<!-- ***** Main Banner Area Start ***** -->
-<div class="page-heading"
-     [ngStyle]="{'background-image':
-     searchMode ? imageUrls[0] :
-     currentCategoryId === 1 ? imageUrls[1] :
-     currentCategoryId === 2 ? imageUrls[2] :
-     currentCategoryId === 3 ? imageUrls[3] :
-     currentCategoryId === 4 ? imageUrls[4] :
-     imageUrls[0]}"
-     id="top">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="inner-content guitar" *ngIf="searchMode">
-          <h2>Search a product</h2>
-          <span>Hop you'll find what you want!</span>
-        </div>
-        <div class="inner-content guitar" *ngIf="currentCategoryId === 1 && !searchMode">
-          <h2>Electric Guitars</h2>
-          <span>Make the amp scream!</span>
-        </div>
-        <div class="inner-content acoustic" *ngIf="currentCategoryId === 2 && !searchMode">
-          <h2>Acoustic Guitars</h2>
-          <span>For the best musical moments including a camp fire</span>
-        </div>
-        <div class="inner-content bass" *ngIf="currentCategoryId === 3 && !searchMode">
-          <h2>Bass Guitars</h2>
-          <span>Let's get groovy!</span>
-        </div>
-        <div class="inner-content bass" *ngIf="currentCategoryId === 4 && !searchMode">
-          <h2>Accessories</h2>
-          <span>At some moment, you'll need them!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ***** Main Banner Area End ***** -->
+<!-- ***** Main Banner Area ***** -->
+<app-banner></app-banner>
+<!-- ***** Main Banner Area ***** -->
 
 <!-- ***** Products Area Starts ***** -->
 <section class="section" id="products">
@@ -43,12 +8,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="section-heading">
-          <h2>All Products</h2>
+          <h2 *ngIf="!allProducts">All Products</h2>
+          <h2 *ngIf="allProducts">The Cave of Ali Baba</h2>
           <span *ngIf="searchMode">We found what you're looking for!</span>
-          <span *ngIf="currentCategoryId === 1 && !searchMode">Check out all of our electric guitars!</span>
-          <span *ngIf="currentCategoryId === 2 && !searchMode">Check out all of our acoustic guitars!</span>
-          <span *ngIf="currentCategoryId === 3 && !searchMode">Check out all of our bass guitars!</span>
-          <span *ngIf="currentCategoryId === 4 && !searchMode">Check out all of our accessories!</span>
+          <span *ngIf="allProducts">Open Sesame!</span>
+          <span *ngIf="currentCategoryId === 1 && (!searchMode && !allProducts)">Check out all of our electric guitars!</span>
+          <span *ngIf="currentCategoryId === 2 && (!searchMode && !allProducts)">Check out all of our acoustic guitars!</span>
+          <span *ngIf="currentCategoryId === 3 && (!searchMode && !allProducts)">Check out all of our bass guitars!</span>
+          <span *ngIf="currentCategoryId === 4 && (!searchMode && !allProducts)">Check out all of our accessories!</span>
         </div>
       </div>
     </div>
@@ -60,7 +27,7 @@
           <div class="thumb">
             <div class="hover-content">
               <ul>
-                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                <li><a routerLink="/products/{{ product.id }}"><i class="fa fa-eye"></i></a></li>
                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
               </ul>

@@ -1,0 +1,30 @@
+@import "../../../../colors";
+
+.page-heading {
+  font-family: $font-family_1;
+  margin-top: 160px;
+  margin-bottom: 30px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
+  .inner-content {
+    padding: 150px 0;
+    text-align: center;
+
+    h2 {
+      font-size: 52px;
+      color: white;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      color: white;
+      font-style: italic;
+    }
+  }
+}

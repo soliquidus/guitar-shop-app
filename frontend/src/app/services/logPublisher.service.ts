@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LogConsole, LogLocalStorage, LogPublisher, LogServerSide} from "../common/log/logPublisher";
+import {LogConsole, LogLocalStorage, LogPublisher} from "../common/log/logPublisher";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
@@ -22,6 +22,6 @@ export class LogPublisherService {
     this.publishers.push(new LogLocalStorage());
 
     // Create instance of LogServerSide Class
-    this.publishers.push(new LogServerSide(this.httpClient, this.logUrl));
+    // this.publishers.push(new LogServerSide(this.httpClient, this.logUrl));
   }
 }
