@@ -16,6 +16,7 @@ import { ProductDetailsComponent } from './components/product/product-details/pr
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CartStatusComponent } from './components/cart/cart-status/cart-status.c
     ProductDetailsComponent,
     BannerComponent,
     FooterComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,

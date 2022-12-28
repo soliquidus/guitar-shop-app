@@ -39,7 +39,7 @@ export class CartService {
     this.computeTotals();
   }
 
-  private computeTotals() {
+  computeTotals() {
     let totalPrice: number = 0;
     let totalQuantity: number = 0;
 
@@ -67,5 +67,24 @@ export class CartService {
     let total = `totalPrice: ${totalPrice.toFixed(2)}, totalQuantity: ${totalQuantity}`;
 
     this.logger.debug('Contents of the cart', cart, total)
+  }
+
+  decrementQuantity(item: CartItem) {
+    item.quantity--;
+
+    if (item.quantity === 0) {
+      this.remove(item);
+    } else {
+      this.computeTotals();
+    }
+  }
+
+  remove(item: CartItem) {
+    let itemIndex = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
+
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.computeTotals();
+    }
   }
 }

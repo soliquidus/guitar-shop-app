@@ -3,8 +3,10 @@ import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
 import {ProductListComponent} from "./components/product/product-list/product-list.component";
 import {ProductDetailsComponent} from "./components/product/product-details/product-details.component";
+import {CartDetailsComponent} from "./components/cart/cart-details/cart-details.component";
 
 const routes: Routes = [
+  {path: 'cart-details', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
