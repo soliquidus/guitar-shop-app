@@ -3,6 +3,8 @@ import {Product} from "../../../common/entity/product";
 import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {LogService} from "../../../services/log.service";
+import {CartService} from "../../../services/cart.service";
+import {CartItem} from "../../../common/entity/cartItem";
 
 @Component({
   selector: 'app-product-details',
@@ -15,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute,
     private logger: LogService
     ) { }
@@ -33,5 +36,12 @@ export class ProductDetailsComponent implements OnInit {
       error: err => this.logger.error('Error while getting product', err),
       complete: () => this.logger.info('Product retrieved')
     })
+  }
+
+  addToCart() {
+    this.logger.debug('Adding to cart', `${this.product.name}, ${this.product.unitPrice}`)
+
+    const item = new CartItem(this.product);
+    this.cartService.addToCart(item);
   }
 }

@@ -1,0 +1,8 @@
+<div class="wrap">
+  <a routerLink="/cart-details">
+    <div>
+      <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+        {{ totalPrice | currency: 'USD' }} | {{ totalQuantity }}
+    </div>
+  </a>
+</div>

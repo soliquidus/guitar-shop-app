@@ -15,6 +15,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     SearchComponent,
     ProductDetailsComponent,
     BannerComponent,
-    FooterComponent
+    FooterComponent,
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import {Product} from "../../../common/entity/product";
 import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LogService} from "../../../services/log.service";
+import {CartItem} from "../../../common/entity/cartItem";
+import {CartService} from "../../../services/cart.service";
 
 const IMAGE_URL: string = '../../../../assets/images/';
 
@@ -29,6 +31,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
     private logger: LogService
@@ -126,5 +129,12 @@ export class ProductListComponent implements OnInit {
       this.pageSize = data.page.size;
       this.totalElements = data.page.totalElements;
     }
+  }
+
+  addToCart(product: Product) {
+    this.logger.debug('Adding to cart', `${product.name}, ${product.unitPrice}`)
+
+    const item = new CartItem(product);
+    this.cartService.addToCart(item);
   }
 }

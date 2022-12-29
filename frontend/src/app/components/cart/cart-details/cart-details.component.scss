@@ -1,0 +1,92 @@
+@import "../../../../colors";
+
+.product-name {
+  margin-left: 10px;
+  padding-right: 20px;
+}
+
+th.product {
+  max-width: 462px !important;
+}
+
+span {
+  margin-left: 10px;
+}
+
+.align-middle{
+  text-align: center;
+}
+
+.quantity.buttons_added {
+  text-align: center;
+  //position: relative;
+  //white-space: nowrap;
+  //vertical-align: top;
+  padding: 0 0 0 ;
+  min-width: 100px;
+
+  strong {
+    padding: 8px 14px;
+    border: 1px solid #efefef;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  i {
+    cursor: pointer;
+  }
+
+  .minus {
+    padding: 7px 10px 8px;
+    height: 39px;
+    background-color: $background-color_1;
+    border: 1px solid #efefef;
+    cursor: pointer;
+    border-right: 0;
+
+    &:hover {
+      background: #eeeeee;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .plus {
+    padding: 7px 10px 8px;
+    height: 39px;
+    background-color: $background-color_1;
+    border: 1px solid #efefef;
+    cursor: pointer;
+    border-left: 0;
+
+    &:hover {
+      background: #eeeeee;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 80px;
+}
+
+@media (max-width: 991px) {
+  .quantity.buttons_added {
+    padding: 0 0 0 ;
+  }
+}
+
+@media (max-width: 991px) {
+  .quantity.buttons_added {
+    strong {
+      padding: 8px 4px;
+    }
+  }
+}

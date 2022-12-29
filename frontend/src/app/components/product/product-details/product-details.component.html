@@ -26,14 +26,19 @@
             </div>
             <div class="right-content">
               <div class="quantity buttons_added">
-                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""
-                                                                    inputmode=""><input type="button" value="+" class="plus">
+                <input type="button" value="-" class="minus">
+                <input type="number" step="1" min="1" max="" name="quantity"
+                       value="1" title="Qty" class="input-text qty text" size="4" pattern=""
+                       inputmode="">
+                <input type="button" value="+" class="plus">
               </div>
             </div>
           </div>
           <div class="total">
-            <h4>Total: $210.00</h4>
-            <div class="main-border-button"><a href="#">Add To Cart</a></div>
+            <h4>Total: TODO</h4>
+            <div class="main-border-button">
+              <a (click)="addToCart()">Add To CartItem</a>
+            </div>
           </div>
         </div>
       </div>
