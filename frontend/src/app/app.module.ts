@@ -17,6 +17,9 @@ import { BannerComponent } from './components/shared/banner/banner.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { OrderSummaryComponent } from './components/shared/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +32,17 @@ import { CartDetailsComponent } from './components/cart/cart-details/cart-detail
     BannerComponent,
     FooterComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent

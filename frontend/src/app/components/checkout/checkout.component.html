@@ -1,0 +1,133 @@
+<app-banner></app-banner>
+<section class="section">
+  <div class="container">
+    <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="center">
+            <h1>Last step: checkout</h1>
+
+            <!-- Shipping Address -->
+            <div class="form-area" formGroupName="shippingAddress">
+              <h3><i class="fa fa-truck"></i> Shipping Address</h3>
+              <div class="input-box">
+                <select required="required" formControlName="country">
+                  <option value="">Country TO DO</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="street">
+                <span>Street</span>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="city">
+                <span>City</span>
+              </div>
+              <div class="input-box">
+                <select required="required" formControlName="state">
+                  <option value="">State TO DO</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="zipCode">
+                <span>Zip Code</span>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" (change)="copyShippingToBilling($event)">
+                <label class="form-check-label">Use same address for billing</label>
+              </div>
+            </div>
+
+            <!-- customer form group -->
+            <div class="form-area" formGroupName="customer">
+              <h3><i class="fa fa-user"></i> Customer</h3>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="firstName">
+                <span>First Name</span>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="lastName">
+                <span>Last Name</span>
+              </div>
+              <div class="input-box mail">
+                <input type="email" required="required" formControlName="email">
+                <span>Email</span>
+              </div>
+              <app-order-summary [totalQuantity]="totalQuantity" [totalPrice]="totalPrice"></app-order-summary>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="center">
+
+            <!-- Billing Address -->
+            <div class="form-area billing" formGroupName="billingAddress">
+              <h3 class="billing"><i class="fa fa-paper-plane"></i> Billing Address</h3>
+              <div class="input-box">
+                <select required="required" formControlName="country">
+                  <option value="">Country TO DO</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="street">
+                <span>Street</span>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="city">
+                <span>City</span>
+              </div>
+              <div class="input-box">
+                <select required="required" formControlName="state">
+                  <option value="">State TO DO</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="zipCode">
+                <span>Zip Code</span>
+              </div>
+            </div>
+
+            <!-- Credit Card -->
+            <div class="form-area billing" formGroupName="creditCard">
+              <h3 class="credit-card"><i class="fa fa-credit-card"></i> Credit Card</h3>
+              <div class="input-box">
+                <select required="required" formControlName="cardType">
+                  <option value="">Card Type</option>
+                  <option value="">Visa</option>
+                  <option value="">Mastecard</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="nameOnCard">
+                <span>Name on card</span>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="cardNumber">
+                <span>Card Number</span>
+              </div>
+              <div class="input-box">
+                <input type="text" required="required" formControlName="securityCode">
+                <span>Security Code</span>
+              </div>
+              <div class="input-box">
+                <select required="required" formControlName="expirationMonth">
+                  <option value="">Expiration Month TO DO</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <select required="required" formControlName="expirationYear">
+                  <option value="">Expiration Year TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-box pay">
+          <input type="button" value="Proceed with payment">
+        </div>
+      </div>
+    </form>
+
+  </div>
+</section>
+

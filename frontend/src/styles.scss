@@ -260,12 +260,14 @@ aside {
     display: inline-block;
     font-weight: 500;
     transition: all .3s;
+
     &:hover {
       background-color: $background-color_1;
       color: $color_1;
     }
   }
 }
+
 .main-white-button {
   a {
     font-size: 13px;
@@ -276,28 +278,33 @@ aside {
     border-radius: 3px;
     font-weight: 600;
     transition: all .3s;
+
     &:hover {
       opacity: 0.9;
     }
   }
 }
+
 .main-text-button {
   a {
     font-size: 13px;
     color: $color_2;
     font-weight: 600;
     transition: all .3s;
+
     &:hover {
       opacity: 0.9;
     }
   }
 }
+
 .section-heading {
   h2 {
     font-size: 34px;
     font-weight: 700;
     color: $color_1;
   }
+
   span {
     font-size: 14px;
     color: $color_3;
