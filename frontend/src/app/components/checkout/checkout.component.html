@@ -11,9 +11,12 @@
             <div class="form-area" formGroupName="shippingAddress">
               <h3><i class="fa fa-truck"></i> Shipping Address</h3>
               <div class="input-box">
-                <select required="required" formControlName="country">
-                  <option value="">Country TO DO</option>
+                <select required="required" formControlName="country" (change)="getStates('shippingAddress')">
+                  <option *ngFor="let country of countries" [ngValue]="country">
+                    {{ country.name }}
+                  </option>
                 </select>
+                <span>Country</span>
               </div>
               <div class="input-box">
                 <input type="text" required="required" formControlName="street">
@@ -25,8 +28,12 @@
               </div>
               <div class="input-box">
                 <select required="required" formControlName="state">
-                  <option value="">State TO DO</option>
+<!--                  <option value="">State</option>-->
+                  <option *ngFor="let state of shippingAddressStates" [ngValue]="state">
+                    {{ state.name }}
+                  </option>
                 </select>
+                <span>State</span>
               </div>
               <div class="input-box">
                 <input type="text" required="required" formControlName="zipCode">
@@ -64,9 +71,12 @@
             <div class="form-area billing" formGroupName="billingAddress">
               <h3 class="billing"><i class="fa fa-paper-plane"></i> Billing Address</h3>
               <div class="input-box">
-                <select required="required" formControlName="country">
-                  <option value="">Country TO DO</option>
+                <select required="required" formControlName="country" (change)="getStates('billingAddress')">
+                  <option *ngFor="let country of countries" [ngValue]="country">
+                    {{ country.name }}
+                  </option>
                 </select>
+                <span>Country</span>
               </div>
               <div class="input-box">
                 <input type="text" required="required" formControlName="street">
@@ -78,7 +88,10 @@
               </div>
               <div class="input-box">
                 <select required="required" formControlName="state">
-                  <option value="">State TO DO</option>
+                  <option value="">State</option>
+                  <option *ngFor="let state of billingAddressStates" [ngValue]="state" >
+                    {{ state.name }}
+                  </option>
                 </select>
               </div>
               <div class="input-box">
@@ -111,13 +124,19 @@
               </div>
               <div class="input-box">
                 <select required="required" formControlName="expirationMonth">
-                  <option value="">Expiration Month TO DO</option>
+                  <option *ngFor="let month of creditCardMonths">
+                    {{ month }}
+                  </option>
                 </select>
+                <span>Expiration month</span>
               </div>
               <div class="input-box">
-                <select required="required" formControlName="expirationYear">
-                  <option value="">Expiration Year TO DO</option>
+                <select required="required" formControlName="expirationYear" (change)="handleCreditCardDate()">
+                  <option *ngFor="let year of creditCardYears">
+                    {{ year }}
+                  </option>
                 </select>
+                <span>Expiration Year</span>
               </div>
             </div>
           </div>
