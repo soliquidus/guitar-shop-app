@@ -147,7 +147,7 @@
     font-family: $font-family_1;
   }
 
-  [type="button"] {
+  [type="submit"] {
     width: 80%;
     background: $color_9;
     color: $color_2;
@@ -155,7 +155,7 @@
   }
 
   &:hover {
-    [type="button"] {
+    [type="submit"] {
       background: linear-gradient(45deg, #540707, $background-color_9);
     }
   }
