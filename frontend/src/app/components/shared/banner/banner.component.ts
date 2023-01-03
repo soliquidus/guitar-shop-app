@@ -41,7 +41,7 @@ export class BannerComponent implements OnInit {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
     this.allProductsView = this.router.url.includes('products') && !this.route.snapshot.paramMap.has('id');
     this.productView = this.router.url.includes('products') && this.route.snapshot.paramMap.has('id');
-    this.cartDetailsView = this.router.url.includes('cart-details');
+    this.cartDetailsView = this.router.url.includes('cart-details') || this.router.url.includes('checkout');
 
     this.route.params.subscribe(() => {
       if(this.route.snapshot.paramMap.has('id') && !this.router.url.includes('products')){
