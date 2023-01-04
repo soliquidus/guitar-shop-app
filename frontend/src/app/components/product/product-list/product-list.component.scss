@@ -45,6 +45,12 @@ Products Page
               display: inline-block;
               color: $color_1;
               background-color: $background-color_1;
+              transition: all .3s;
+
+              &:hover {
+                color: $color_2;
+                background-color: $background-color_9;
+              }
             }
           }
         }

@@ -5,7 +5,7 @@
       <div class="col-12">
         <nav class="main-nav">
           <!-- ***** Logo ***** -->
-          <a href="index.html" class="logo">
+          <a routerLink="/home" class="logo">
             <img src="assets/images/logo.png" alt="guitarShop">
           </a>
           <!-- ***** Menu ***** -->
@@ -14,13 +14,14 @@
               <a routerLink="/home" routerLinkActive="active">Home</a>
             </li>
             <li *ngFor="let productCategory of productCategories" class="scroll-to-section">
-              <a routerLink="/category/{{productCategory.id}}" routerLinkActive="active">
+              <a routerLink="/category/{{productCategory.id}}" routerLinkActive="active" (click)="dropMenu = false">
                 {{productCategory.categoryName}}
               </a>
             </li>
             <li><app-cart-status></app-cart-status></li>
             <li><app-search></app-search></li>
           </ul>
+          <!-- ***** Drop down menu for responsiveness ***** -->
           <a [className]="dropMenu ? 'menu-trigger active' : 'menu-trigger'"
              (click)="dropMenu = !dropMenu"
           >

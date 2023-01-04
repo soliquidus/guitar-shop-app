@@ -49,5 +49,22 @@
   .wrap {
     position: inherit;
     margin: 0 180px;
+
+    .search{
+      padding: 0 0 0 0;
+      height: 50px !important;
+      line-height: 50px !important;
+      border: none !important;
+      background: #f7f7f7 !important;
+      color: $color_1 !important;
+    }
+
+    .searchTerm {
+      height: 51px;
+    }
+
+    .searchButton {
+      height: 51px;
+    }
   }
 }

@@ -1,0 +1,10 @@
+@import "../../../../colors";
+
+a {
+  border-color: $color_9;
+  background-color: $background-color_9;
+
+  &:hover {
+    background-color: #870202;
+  }
+}

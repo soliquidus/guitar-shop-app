@@ -22,7 +22,6 @@ Header main style
 
   .main-nav {
     .nav {
-
       li {
         a {
           color: $color_1 !important;
@@ -30,13 +29,13 @@ Header main style
 
         &:hover {
           a {
-            color: $color_4 !important;
+            color: $color_9 !important;
             opacity: 1;
           }
         }
 
         a.active {
-          color: $color_4 !important;
+          color: $color_9 !important;
           opacity: 1;
         }
       }
@@ -57,14 +56,6 @@ Header main style
 
       span {
         background-color: $background-color_6;
-
-        &:before {
-          background-color: $background-color_6;
-        }
-
-        &:after {
-          background-color: $background-color_6;
-        }
       }
     }
 
@@ -165,12 +156,12 @@ Header main style
 
         &:hover {
           a {
-            color: $color_4 !important;
+            color: $color_9 !important;
           }
         }
 
         a.active {
-          color: $color_4 !important;
+          color: $color_9 !important;
         }
       }
 
@@ -224,7 +215,7 @@ Header main style
 
               &:hover {
                 background: #fff;
-                color: $color_4 !important;
+                color: $color_9 !important;
                 padding-left: 25px;
 
                 &:before {
@@ -403,7 +394,7 @@ Header main style
 
             &:hover {
               background: #eee !important;
-              color: $color_4 !important;
+              color: $color_9 !important;
             }
           }
         }
@@ -506,25 +497,17 @@ Header main style
   }
 }
 
-@media (min-width: 768px) {
-  .header-area {
-    .main-nav {
-      .nav {
-        display: flex !important;
-      }
-    }
-  }
-}
-
 /*
 ---------------------------------------------
 Header responsiveness
 ---------------------------------------------
 */
-@media (max-width: 992px) {
+
+@media (max-width: 1200px) {
   .header-area {
     .main-nav {
       .nav {
+        margin: 45px 0 0 0;
         animation: rotateMenu 400ms ease-in-out forwards;
         transform-origin: top center;
 
@@ -549,6 +532,71 @@ Header responsiveness
     }
   }
 }
+
+@media (min-width: 1500px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        margin: -55px -49px 0px 0;
+        display: flex !important;
+      }
+    }
+  }
+}
+
+@media(min-width: 1200px) {
+  .header-area {
+    .main-nav {
+      .logo {
+        margin-left: 100px;
+      }
+      .nav {
+        margin: 45px -40px 0 0;
+      }
+    }
+  }
+}
+
+@media(min-width: 1260px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        margin: 45px -70px 0 0;
+      }
+    }
+  }
+}
+
+@media(min-width: 1350px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        margin: 45px -150px 0 0;
+      }
+    }
+  }
+}
+
+@media(min-width: 1600px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        margin: 45px -300px 0 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        margin: -54px -134px 0 0;
+      }
+    }
+  }
+}
+
 
 @-moz-keyframes rotateMenu {
   0% {

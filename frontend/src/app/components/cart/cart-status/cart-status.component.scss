@@ -1,3 +1,5 @@
+@import "../../../../colors";
+
 .wrap {
   margin: 0 80px;
   width: 20%;
@@ -7,4 +9,18 @@
 
 a {
   color: #000;
+}
+
+div {
+  transition: all .3s;
+  &:hover {
+    color: $background-color_9;
+  }
+}
+
+@media (max-width: 768px) {
+  div {
+    height: 50px;
+    padding-top: 8px;
+  }
 }

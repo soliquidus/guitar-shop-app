@@ -9,6 +9,7 @@ import {ProductService} from "../../../services/product.service";
 })
 export class FooterComponent implements OnInit {
   productCategories: ProductCategory[] = [];
+  presentYear: number = new Date().getFullYear();
 
   constructor(private productService: ProductService) { }
 
@@ -18,7 +19,7 @@ export class FooterComponent implements OnInit {
 
   scrollToTop() {
     window.scroll({
-      top: 150,
+      top: 650,
       left: 0,
       behavior: 'smooth'
     })

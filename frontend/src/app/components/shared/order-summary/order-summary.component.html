@@ -1,4 +1,4 @@
-<div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary</div>
+<div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"><strong>Order summary</strong></div>
 <div>
   <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
   <ul class="list-unstyled mb-4">
@@ -8,5 +8,5 @@
       <h5 class="font-weight-bold">{{ totalPrice | currency: 'USD' }}</h5>
     </li>
   </ul>
-  <a *ngIf="!checkoutView" routerLink="/checkout" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+  <a *ngIf="!checkoutView" routerLink="/checkout" class="btn btn-dark rounded-pill py-2 btn-block">Proceed to checkout</a>
 </div>

@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 const IMAGE_URL: string = '../../../../assets/images/';
 
 // Banner images urls
-const PRODUCTS_URL = `url(${IMAGE_URL}all-products.png)`;
+const PRODUCTS_URL = `url(${IMAGE_URL}all-products-banner.png)`;
 const GUITARS_URL = `url(${IMAGE_URL}guitar-banner.png)`;
 const ACOUSTICS_URL = `url(${IMAGE_URL}acoustic-banner.png)`;
 const BASS_URL = `url(${IMAGE_URL}bass-banner.png)`;
@@ -23,6 +23,8 @@ export class BannerComponent implements OnInit {
   productView: boolean = false;
   allProductsView: boolean = false;
   cartDetailsView: boolean = false;
+  checkoutView: boolean = false;
+
   imageUrls: {[key: string]: string} = {
     PRODUCTS: PRODUCTS_URL,
     GUITARS: GUITARS_URL,
@@ -41,7 +43,10 @@ export class BannerComponent implements OnInit {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
     this.allProductsView = this.router.url.includes('products') && !this.route.snapshot.paramMap.has('id');
     this.productView = this.router.url.includes('products') && this.route.snapshot.paramMap.has('id');
-    this.cartDetailsView = this.router.url.includes('cart-details') || this.router.url.includes('checkout');
+    this.cartDetailsView = this.router.url.includes('cart-details');
+    this.checkoutView = this.router.url.includes('checkout');
+
+    console.debug(this.checkoutView)
 
     this.route.params.subscribe(() => {
       if(this.route.snapshot.paramMap.has('id') && !this.router.url.includes('products')){
