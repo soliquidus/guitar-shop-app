@@ -10,8 +10,8 @@ http://maven.apache.org/POM/4.0.0 ">
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pazdev</groupId>
-	<artifactId>guitar-shop</artifactId>
-	<version>0.3</version>
+	<artifactId>guitarshop</artifactId>
+	<version>1.0</version>
 	<name>guitar-shop</name>
 	<description>Guitar Shop Fullstack App</description>
 	<properties>
@@ -54,14 +54,6 @@ http://maven.apache.org/POM/4.0.0 ">
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
