@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable, of} from "rxjs";
-import {Country} from "../common/entity/country";
+import {Country} from "../common/models/country";
 import {CountryInterface} from "../common/interface/countryInterface";
-import {State} from "../common/entity/state";
+import {State} from "../common/models/state";
 import {StateInterface} from "../common/interface/stateInterface";
 
 @Injectable({

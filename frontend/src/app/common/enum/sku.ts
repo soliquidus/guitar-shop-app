@@ -1,0 +1,6 @@
+export enum Sku {
+  GUITAR = 'GUITAR',
+  ACOUSTIC = 'ACOUSTIC',
+  BASS = 'BASS',
+  ACCESSORY = 'ACCESSORY'
+}

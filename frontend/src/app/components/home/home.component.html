@@ -1,3 +1,4 @@
+<!-- ***** Main Banner Area Start ***** -->
 <div class="main-banner" id="top">
   <div class="container-fluid">
     <div class="row">
@@ -104,4 +105,103 @@
     </div>
   </div>
 </div>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Most recent products Area Start ***** -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-heading">
+          <h2>Latest Guitars</h2>
+          <span>Our latest wild guitars arrivals!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let product of recentGuitars">
+        <div class="item">
+          <div class="thumb">
+            <div class="hover-content">
+              <ul>
+                <li><a routerLink="/products/{{ product.id }}"><i class="fa fa-eye"></i></a></li>
+                <li *ngIf="product.unitsInStock > 0"><a (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div>
+            <img src="{{product.imageUrl}}" alt="product-photo">
+          </div>
+          <div class="down-content">
+            <h4>{{product.name}}</h4>
+            <span>{{product.unitPrice | currency: 'USD'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-heading">
+          <h2>Latest Acoustic Guitars</h2>
+          <span>Our latest acoustic guitars for camp fire sessions!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let product of recentAcousticGuitars">
+        <div class="item">
+          <div class="thumb">
+            <div class="hover-content">
+              <ul>
+                <li><a routerLink="/products/{{ product.id }}"><i class="fa fa-eye"></i></a></li>
+                <li *ngIf="product.unitsInStock > 0"><a (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div>
+            <img src="{{product.imageUrl}}" alt="product-photo">
+          </div>
+          <div class="down-content">
+            <h4>{{product.name}}</h4>
+            <span>{{product.unitPrice | currency: 'USD'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-heading">
+          <h2>Latest Bass Guitars</h2>
+          <span>Our latest basses to groove!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let product of recentBasses">
+        <div class="item">
+          <div class="thumb">
+            <div class="hover-content">
+              <ul>
+                <li><a routerLink="/products/{{ product.id }}"><i class="fa fa-eye"></i></a></li>
+                <li *ngIf="product.unitsInStock > 0"><a (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div>
+            <img src="{{product.imageUrl}}" alt="product-photo">
+          </div>
+          <div class="down-content">
+            <h4>{{product.name}}</h4>
+            <span>{{product.unitPrice | currency: 'USD'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Most recent products Area End ***** -->
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartItem} from "../../../common/entity/cartItem";
+import {CartItem} from "../../../common/models/cartItem";
 import {CartService} from "../../../services/cart.service";
 import {Categories} from "../../../common/enum/categories";
 
@@ -13,6 +13,7 @@ export class CartDetailsComponent implements OnInit {
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
   totalQuantity: number = 0;
+  isOutOfStock: boolean = false;
   categories = Categories;
 
   constructor(
@@ -39,10 +40,16 @@ export class CartDetailsComponent implements OnInit {
   }
 
   incrementQuantity(item: CartItem) {
-    this.cartService.addToCart(item);
+    item.unitsInStock--;
+    console.log(item.unitsInStock)
+    item.unitsInStock <= 0 ? this.isOutOfStock = true : this.isOutOfStock = false;
+    if(!this.isOutOfStock) {
+      this.cartService.addToCart(item);
+    }
   }
 
   decrementQuantity(item: CartItem) {
+    item.unitsInStock++
     this.cartService.decrementQuantity(item);
   }
 

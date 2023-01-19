@@ -1,18 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {LogService} from "../../services/log.service";
-import {Country} from "../../common/entity/country";
-import {State} from "../../common/entity/state";
+import {Country} from "../../common/models/country";
+import {State} from "../../common/models/state";
 import {ShopFormService} from "../../services/shop-form.service";
 import {CartService} from "../../services/cart.service";
 import {ShopValidators} from "../../validators/shop-validators";
 import {CheckoutService} from "../../services/checkout.service";
 import {Router} from "@angular/router";
-import {Order} from "../../common/entity/order";
-import {OrderItem} from "../../common/entity/orderItem";
-import {Purchase} from "../../common/entity/purchase";
-import {Customer} from "../../common/entity/customer";
-import {Address} from "../../common/entity/address";
+import {Order} from "../../common/models/order";
+import {OrderItem} from "../../common/models/orderItem";
+import {Purchase} from "../../common/models/purchase";
+import {Customer} from "../../common/models/customer";
+import {Address} from "../../common/models/address";
+import {ProductCategory} from "../../common/models/productCategory";
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +21,7 @@ import {Address} from "../../common/entity/address";
   styleUrls: ['./checkout.component.scss', '../../../assets/styles/font-awesome.css']
 })
 export class CheckoutComponent implements OnInit {
+  productCategories: ProductCategory[] = []
 
   checkoutFormGroup!: FormGroup;
   totalPrice = 0;
@@ -46,6 +48,17 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.reviewCartDetails();
 
+    this.createCheckoutForm();
+
+    this.fillCountriesAndCreditCardValues();
+  };
+
+
+  /**
+   * Initialize the checkout form with validations constraints
+   * @private
+   */
+  private createCheckoutForm() {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [
@@ -121,7 +134,13 @@ export class CheckoutComponent implements OnInit {
         expirationYear: [''],
       })
     });
+  }
 
+  /**
+   * Initialize credit card months, years logic and get countries
+   * @private
+   */
+  private fillCountriesAndCreditCardValues() {
     // fill credit card months
     const startMonth: number = new Date().getMonth() + 1;
     this.logger.debug('startMonth', startMonth)
@@ -148,8 +167,7 @@ export class CheckoutComponent implements OnInit {
         this.countries = data;
       }
     );
-  };
-
+  }
 
   /********
    * *** Getters for form group attributes
@@ -228,8 +246,8 @@ export class CheckoutComponent implements OnInit {
     return this.checkoutFormGroup.get('creditCard.securityCode');
   }
 
-  onSubmit() {
-    if(this.checkoutFormGroup.invalid){
+  async onSubmit() {
+    if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
       return;
     }
@@ -279,7 +297,6 @@ export class CheckoutComponent implements OnInit {
       }
     })
   };
-
 
 
   /**

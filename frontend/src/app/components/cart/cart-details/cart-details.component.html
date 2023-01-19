@@ -45,7 +45,7 @@
               <div class="quantity buttons_added">
                 <input type="button" value="-" class="minus" (click)="decrementQuantity(item)">
                 <strong>{{ item.quantity }}</strong>
-                <input type="button" value="+" class="plus" (click)="incrementQuantity(item)">
+                <input [disabled]="isOutOfStock" type="button" value="+" class="plus" (click)="incrementQuantity(item)">
               </div>
             </td>
             <td class="border-0 align-middle"><a class="text-dark" (click)="remove(item)"><i class="fa fa-trash"></i></a></td>

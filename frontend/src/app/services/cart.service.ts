@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CartItem} from "../common/entity/cartItem";
+import {CartItem} from "../common/models/cartItem";
 import {BehaviorSubject, Subject} from "rxjs";
 import {LogService} from "./log.service";
 
@@ -63,10 +63,10 @@ export class CartService {
 
     this.logCartData(totalPrice, totalQuantity);
 
-    this.persistCartItems();
+    this.persistCartItemsInSession();
   }
 
-   private persistCartItems() {
+   private persistCartItemsInSession() {
     this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
    }
 

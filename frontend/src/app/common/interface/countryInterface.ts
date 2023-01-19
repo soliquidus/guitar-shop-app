@@ -1,4 +1,4 @@
-import {Country} from "../entity/country";
+import {Country} from "../models/country";
 
 export interface CountryInterface {
   _embedded: {

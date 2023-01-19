@@ -1,4 +1,4 @@
-import {State} from "../entity/state";
+import {State} from "../models/state";
 
 export interface StateInterface {
   _embedded: {

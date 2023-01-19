@@ -1,5 +1,6 @@
 export enum Categories {
   GUITARS = 'Guitars',
-  BASSES = 'Basses',
+  ACOUSTIC_GUITARS = 'Acoustic Guitars',
+  BASSES = 'Bass Guitars',
   ACCESSORIES = 'Accessories'
 }

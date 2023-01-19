@@ -1,4 +1,4 @@
-import {Product} from "../entity/product";
+import {Product} from "../models/product";
 
 export interface ProductInterface {
   _embedded: {

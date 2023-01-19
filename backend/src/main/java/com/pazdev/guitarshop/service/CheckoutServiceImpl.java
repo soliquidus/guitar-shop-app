@@ -6,6 +6,7 @@ import com.pazdev.guitarshop.dto.PurchaseResponse;
 import com.pazdev.guitarshop.entity.Customer;
 import com.pazdev.guitarshop.entity.Order;
 import com.pazdev.guitarshop.entity.OrderItem;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,17 +17,10 @@ import java.util.UUID;
  * The type Checkout service.
  */
 @Service
+@AllArgsConstructor
 public class CheckoutServiceImpl implements CheckoutService {
     private final CustomerRepository customerRepository;
-
-    /**
-     * Instantiates a new Checkout service.
-     *
-     * @param customerRepository the customer repository
-     */
-    public CheckoutServiceImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+    private final ProductService productService;
 
     @Override
     @Transactional
@@ -50,8 +44,17 @@ public class CheckoutServiceImpl implements CheckoutService {
         Customer customer = purchase.getCustomer();
         customer.add(order);
 
+        // update products stock
+        orderItems.forEach(item ->
+                this.productService.updateStock(item.getProductId(), item.getQuantity())
+        );
+
         // save to database
-        customerRepository.save(customer);
+        try {
+            customerRepository.save(customer);
+        } catch (Exception e) {
+            throw new NullPointerException();
+        }
 
         return new PurchaseResponse(orderTrackingNumber);
     }
