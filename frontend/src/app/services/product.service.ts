@@ -5,7 +5,9 @@ import {map, Observable} from "rxjs";
 import {ProductInterface} from "../common/interface/productInterface";
 import {LogService} from "./log.service";
 import {ProductCategoryInterface} from "../common/interface/productCategoryInterface";
-import {Product} from "../common/entity/product";
+import {Product} from "../common/models/product";
+import {ProductCategory} from "../common/models/productCategory";
+import {ProductUpdate} from "../common/models/productUpdate";
 
 @Injectable({
   providedIn: 'root'
@@ -32,15 +34,27 @@ export class ProductService {
     return this.httpClient.get<ProductInterface>(searchUrl);
   }
 
-  getProductCategories() {
+  getProductCategories(): Observable<ProductCategory[]> {
     return this.httpClient.get<ProductCategoryInterface>(this.categoryUrl).pipe(
       map(response => response._embedded.productCategory)
     );
   }
 
+  getProductCategoriesWithProducts(): Observable<ProductCategory[]> {
+    let url = `${this.categoryUrl}?projection=withProducts`;
+
+    return this.httpClient.get<ProductCategoryInterface>(url).pipe(
+      map(response => response._embedded.productCategory)
+    );
+  }
+
+  updateProduct(id: number, product: ProductUpdate): Observable<ProductUpdate> {
+    let url = `${this.baseUrl}/${id}`;
+    return this.httpClient.put<ProductUpdate>(url, product);
+  }
+
   searchProducts(keyword: string): Observable<Product[]> {
     const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
-    console.log(searchUrl)
 
     return this.getProducts(searchUrl);
   }
@@ -52,7 +66,7 @@ export class ProductService {
     return this.httpClient.get<ProductInterface>(searchUrl);
   }
 
-  private getProducts(searchUrl: string) {
+  private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<ProductInterface>(searchUrl).pipe(
       map(response => response._embedded.products)
     );

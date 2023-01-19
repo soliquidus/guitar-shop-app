@@ -3,8 +3,9 @@
      [ngStyle]="{'background-image':
      searchMode ? imageUrls['PRODUCTS'] :
      allProductsView ? imageUrls['PRODUCTS'] :
-     cartDetailsView ? imageUrls['CART_DETAILS'] :
      productView ? imageUrls['PRODUCT_DETAILS'] :
+     cartDetailsView ? imageUrls['CART_DETAILS'] :
+     checkoutView ? imageUrls['PRODUCTS'] :
      currentCategory === 1 ? imageUrls['GUITARS'] :
      currentCategory === 2 ? imageUrls['ACOUSTICS'] :
      currentCategory === 3 ? imageUrls['BASSES'] :
@@ -16,14 +17,19 @@
       <div class="col-lg-12">
         <div class="inner-content" *ngIf="searchMode">
           <h2>Search a product</h2>
-          <span>Hop you'll find what you want!</span>
+          <span>Hope you'll find what you want!</span>
         </div>
         <div class="inner-content" *ngIf="productView">
           <h2>Product details</h2>
           <span>What's that thing all about?</span>
-        </div> <div class="inner-content" *ngIf="cartDetailsView">
+        </div>
+        <div class="inner-content" *ngIf="cartDetailsView">
           <h2>Cart details</h2>
           <span>Better check if you really did choose all you want!</span>
+        </div>
+        <div class="inner-content" *ngIf="checkoutView">
+          <h2>Checkout</h2>
+          <span>Time to get all that amazing stuff!</span>
         </div>
         <div class="inner-content" *ngIf="allProductsView">
           <h2>All our products</h2>

@@ -1,4 +1,4 @@
-import {ProductCategory} from "../entity/productCategory";
+import {ProductCategory} from "../models/productCategory";
 
 export interface ProductCategoryInterface {
   _embedded: {

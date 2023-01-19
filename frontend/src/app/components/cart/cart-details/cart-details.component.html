@@ -36,7 +36,7 @@
                   <span *ngIf="item.imageUrl.includes('guitar-')" class="text-muted font-weight-normal font-italic d-block">Category: {{ categories.GUITARS }}</span>
                   <span *ngIf="item.imageUrl.includes('bass-')" class="text-muted font-weight-normal font-italic d-block">Category: {{ categories.BASSES }}</span>
                   <span *ngIf="item.imageUrl.includes('accessory-')" class="text-muted font-weight-normal font-italic d-block">Category: {{ categories.ACCESSORIES }}</span>
-                  <span class="text-muted font-weight-normal font-italic d-block">Price : {{ item.unitPrice | currency: 'USD'}}</span>
+                  <span class="text-muted font-weight-normal font-italic d-block">Individual price : {{ item.unitPrice | currency: 'USD'}}</span>
                 </div>
               </div>
             </th>
@@ -45,7 +45,7 @@
               <div class="quantity buttons_added">
                 <input type="button" value="-" class="minus" (click)="decrementQuantity(item)">
                 <strong>{{ item.quantity }}</strong>
-                <input type="button" value="+" class="plus" (click)="incrementQuantity(item)">
+                <input [disabled]="isOutOfStock" type="button" value="+" class="plus" (click)="incrementQuantity(item)">
               </div>
             </td>
             <td class="border-0 align-middle"><a class="text-dark" (click)="remove(item)"><i class="fa fa-trash"></i></a></td>
@@ -57,10 +57,10 @@
     </div>
   </div>
 
-  <div class="row py-5 p-4 bg-white rounded shadow-sm">
-    <div class="col-lg-6">
+  <div class="row py-5 p-4 bg-white rounded shadow-sm align-items-center">
+<!--    <div class="col-lg-6">-->
       <app-order-summary [totalPrice]="totalPrice" [totalQuantity]="totalQuantity"></app-order-summary>
-    </div>
+<!--    </div>-->
   </div>
 </div>
 

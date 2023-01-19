@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 
 import javax.persistence.metamodel.EntityType;
 
+import com.pazdev.guitarshop.service.projection.ProductCategoryProjection;
 import com.pazdev.guitarshop.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 @Configuration
-public class DataRestConfig  implements RepositoryRestConfigurer {
+public class DataRestConfig implements RepositoryRestConfigurer {
     @Value("${allowed.origins}")
     private String[] allowedOrigins;
 
@@ -31,14 +32,17 @@ public class DataRestConfig  implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
+        HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable HTTP methods for given classes: PUT, POST, DELETE and PATCH
-        disableHttpMethods(Product.class ,config, unsupportedActions);
-        disableHttpMethods(ProductCategory.class ,config, unsupportedActions);
-        disableHttpMethods(Country.class ,config, unsupportedActions);
-        disableHttpMethods(State.class ,config, unsupportedActions);
-        disableHttpMethods(Order.class ,config, unsupportedActions);
+        disableHttpMethods(Product.class, config, unsupportedActions);
+        disableHttpMethods(ProductCategory.class, config, unsupportedActions);
+        disableHttpMethods(Country.class, config, unsupportedActions);
+        disableHttpMethods(State.class, config, unsupportedActions);
+        disableHttpMethods(Order.class, config, unsupportedActions);
+
+        config.getProjectionConfiguration()
+                .addProjection(ProductCategoryProjection.class);
 
         exposeIds(config);
 
@@ -57,7 +61,7 @@ public class DataRestConfig  implements RepositoryRestConfigurer {
 
         List<Class> classes = new ArrayList<>();
 
-        for(EntityType entityType: entityTypes){
+        for (EntityType entityType : entityTypes) {
             classes.add(entityType.getJavaType());
         }
 

@@ -1,4 +1,5 @@
 @import "../../../colors";
+@import "../../components/product/product-list/product-list.component";
 
 .main-banner {
   font-family: $font-family_1;
@@ -13,9 +14,9 @@
       }
     }
     .inner-content {
+      margin-top: 210px;
       position: absolute;
       left: 100px;
-      top: 50%;
       transform: translateY(-50%);
       h4 {
         color: $color_2;
@@ -100,6 +101,13 @@
         }
       }
     }
+  }
+}
+
+
+#products {
+  .section-heading {
+    text-align: left;
   }
 }
 

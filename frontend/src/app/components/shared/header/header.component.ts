@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductCategory} from "../../../common/entity/productCategory";
+import {ProductCategory} from "../../../common/models/productCategory";
 import {ProductService} from "../../../services/product.service";
 import {LogService} from "../../../services/log.service";
 

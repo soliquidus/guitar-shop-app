@@ -26,7 +26,7 @@ public class ClientLogController {
     private final FileHandling fileHandling = new FileHandling();
 
     @PostMapping
-    public void getLogFromLocalStorage(@RequestBody ClientLogEntry[] logEntries){
+    public void getLogFromLocalStorage(@RequestBody ClientLogEntry[] logEntries) {
         Type listType = new TypeToken<List<ClientLogEntry>>() {
         }.getType();
 

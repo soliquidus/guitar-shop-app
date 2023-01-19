@@ -13,16 +13,13 @@ span {
   margin-left: 10px;
 }
 
-.align-middle{
+.align-middle {
   text-align: center;
 }
 
 .quantity.buttons_added {
   text-align: center;
-  //position: relative;
-  //white-space: nowrap;
-  //vertical-align: top;
-  padding: 0 0 0 ;
+  padding: 0 0 0;
   min-width: 100px;
 
   strong {
@@ -45,7 +42,9 @@ span {
     border-right: 0;
 
     &:hover {
-      background: #eeeeee;
+      background: $background-color_9;
+      color: $color_2 !important;
+      opacity: 1;
     }
 
     &:focus {
@@ -62,7 +61,15 @@ span {
     border-left: 0;
 
     &:hover {
-      background: #eeeeee;
+      background: $background-color_9;
+      color: $color_2 !important;
+      opacity: 1;
+
+      &:disabled {
+        cursor: default;
+        background: $background-color_8;
+        color: $color_1 !important;
+      }
     }
 
     &:focus {
@@ -79,7 +86,7 @@ span {
 
 @media (max-width: 991px) {
   .quantity.buttons_added {
-    padding: 0 0 0 ;
+    padding: 0 0 0;
   }
 }
 

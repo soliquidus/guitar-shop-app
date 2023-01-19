@@ -39,17 +39,6 @@ Single Product Page
       padding-bottom: 20px;
     }
 
-    ul.stars {
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      li {
-        display: inline;
-        font-size: 13px;
-      }
-    }
-
     span {
       font-size: 14px;
       color: $color_3;
@@ -110,6 +99,11 @@ Single Product Page
 
   .right-content {
     text-align: right;
+
+    .error {
+      color: $color_9;
+      text-align: left;
+    }
   }
 }
 
@@ -126,11 +120,13 @@ Single Product Page
 
     a {
       border-color: $border-color_1;
-      color: $color_1;
+      color: $color_2;
+      background-color: $background-color_9;
 
       &:hover {
-        color: $color_3;
-        background-color: $background-color_4;
+        cursor: pointer;
+        color: $color_2;
+        background-color: #ae0606;
       }
     }
   }
@@ -146,6 +142,10 @@ Single Product Page
     text-align: center;
     background-color: $background-color_3;
     border: 1px solid #efefef;
+
+    &:hover {
+      cursor: default;
+    }
   }
 
   input {
@@ -185,7 +185,9 @@ Single Product Page
     border-right: 0;
 
     &:hover {
-      background: #eeeeee;
+      background: $background-color_9;
+      color: $color_2 !important;
+      opacity: 1;
     }
 
     &:focus {
@@ -202,7 +204,15 @@ Single Product Page
     border-left: 0;
 
     &:hover {
-      background: #eeeeee;
+      background: $background-color_9;
+      color: $color_2 !important;
+      opacity: 1;
+
+      &:disabled {
+        cursor: default;
+        background: $background-color_8;
+        color: $color_1 !important;
+      }
     }
 
     &:focus {

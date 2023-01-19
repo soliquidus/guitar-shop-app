@@ -5,6 +5,7 @@ import {ProductListComponent} from "./components/product/product-list/product-li
 import {ProductDetailsComponent} from "./components/product/product-details/product-details.component";
 import {CartDetailsComponent} from "./components/cart/cart-details/cart-details.component";
 import {CheckoutComponent} from "./components/checkout/checkout.component";
+import {ProductCategoryResolver} from "./services/resolvers/product-category.resolver";
 
 const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, resolve: {productCategories: ProductCategoryResolver}},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -22,9 +23,12 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: 'enabled'
     }
   )],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ProductCategoryResolver]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
