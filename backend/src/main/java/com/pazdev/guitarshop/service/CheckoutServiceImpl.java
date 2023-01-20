@@ -40,8 +40,15 @@ public class CheckoutServiceImpl implements CheckoutService {
         order.setBillingAddress(purchase.getBillingAddress());
         order.setShippingAddress(purchase.getShippingAddress());
 
-        // fill customer with order
+        // fill customer with order and check if exists in DB based on email
         Customer customer = purchase.getCustomer();
+        String email = customer.getEmail();
+        Customer customerInDb = customerRepository.findByEmail(email);
+
+        if(customerInDb != null) {
+            customer = customerInDb;
+        }
+
         customer.add(order);
 
         // update products stock

@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  shopApiUrl: 'http://localhost:4444/api'
+  shopApiUrl: 'http://localhost:4444/api',
+
+  oktaConfig: {
+    clientId: '0oa735dafatQozdr25d7',
+    server: 'https://dev-73897166.okta.com/oauth2/default'
+  }
 };
 
 /*

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductCategory} from "../../../common/models/productCategory";
 import {ProductService} from "../../../services/product.service";
 import {LogService} from "../../../services/log.service";
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.listProductCategories();
+      this.listProductCategories();
   }
 
   private listProductCategories() {

@@ -1,20 +1,37 @@
 <!-- ***** Main Banner Area Start ***** -->
 <div class="page-heading"
      [ngStyle]="{'background-image':
+     currentCategory === 1 ? imageUrls['GUITARS'] :
+     currentCategory === 2 ? imageUrls['ACOUSTICS'] :
+     currentCategory === 3 ? imageUrls['BASSES'] :
+     currentCategory === 4 ? imageUrls['ACCESSORIES'] :
      searchMode ? imageUrls['PRODUCTS'] :
      allProductsView ? imageUrls['PRODUCTS'] :
      productView ? imageUrls['PRODUCT_DETAILS'] :
      cartDetailsView ? imageUrls['CART_DETAILS'] :
      checkoutView ? imageUrls['PRODUCTS'] :
-     currentCategory === 1 ? imageUrls['GUITARS'] :
-     currentCategory === 2 ? imageUrls['ACOUSTICS'] :
-     currentCategory === 3 ? imageUrls['BASSES'] :
-     currentCategory === 4 ? imageUrls['ACCESSORIES'] :
+     adminView ? imageUrls['ADMIN'] :
      imageUrls['PRODUCTS']}"
      id="top">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
+        <div class="inner-content" *ngIf="currentCategory === 1 && !searchMode">
+          <h2>Electric Guitars</h2>
+          <span>Make the amp scream!</span>
+        </div>
+        <div class="inner-content" *ngIf="currentCategory === 2 && !searchMode">
+          <h2>Acoustic Guitars</h2>
+          <span>For the best musical moments including a camp fire</span>
+        </div>
+        <div class="inner-content" *ngIf="currentCategory === 3 && !searchMode">
+          <h2>Bass Guitars</h2>
+          <span>Let's get groovy!</span>
+        </div>
+        <div class="inner-content" *ngIf="currentCategory === 4 && !searchMode">
+          <h2>Accessories</h2>
+          <span>At some moment, you'll need them!</span>
+        </div>
         <div class="inner-content" *ngIf="searchMode">
           <h2>Search a product</h2>
           <span>Hope you'll find what you want!</span>
@@ -35,21 +52,9 @@
           <h2>All our products</h2>
           <span>Well, good luck with choosing among all the stuff we have!</span>
         </div>
-        <div class="inner-content" *ngIf="currentCategory === 1 && !searchMode">
-          <h2>Electric Guitars</h2>
-          <span>Make the amp scream!</span>
-        </div>
-        <div class="inner-content" *ngIf="currentCategory === 2 && !searchMode">
-          <h2>Acoustic Guitars</h2>
-          <span>For the best musical moments including a camp fire</span>
-        </div>
-        <div class="inner-content" *ngIf="currentCategory === 3 && !searchMode">
-          <h2>Bass Guitars</h2>
-          <span>Let's get groovy!</span>
-        </div>
-        <div class="inner-content" *ngIf="currentCategory === 4 && !searchMode">
-          <h2>Accessories</h2>
-          <span>At some moment, you'll need them!</span>
+        <div class="inner-content" *ngIf="adminView">
+          <h2>Welcome mighty administrator</h2>
+          <span>Please don't erase everything!</span> 😅
         </div>
       </div>
     </div>

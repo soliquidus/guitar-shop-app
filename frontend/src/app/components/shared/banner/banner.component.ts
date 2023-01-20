@@ -11,6 +11,7 @@ const BASS_URL = `url(${IMAGE_URL}bass-banner.png)`;
 const ACCESSORY_URL = `url(${IMAGE_URL}accessories-banner.png)`;
 const PRODUCT_DETAILS_URL = `url(${IMAGE_URL}product-details-banner.png)`;
 const CART_DETAILS = `url(${IMAGE_URL}cart-banner.png)`;
+const ADMIN = `url(${IMAGE_URL}admin/admin-banner.png)`;
 
 @Component({
   selector: 'app-banner',
@@ -24,6 +25,7 @@ export class BannerComponent implements OnInit {
   allProductsView: boolean = false;
   cartDetailsView: boolean = false;
   checkoutView: boolean = false;
+  adminView: boolean = false;
 
   imageUrls: {[key: string]: string} = {
     PRODUCTS: PRODUCTS_URL,
@@ -32,7 +34,8 @@ export class BannerComponent implements OnInit {
     BASSES: BASS_URL,
     ACCESSORIES: ACCESSORY_URL,
     PRODUCT_DETAILS: PRODUCT_DETAILS_URL,
-    CART_DETAILS: CART_DETAILS
+    CART_DETAILS: CART_DETAILS,
+    ADMIN: ADMIN
   }
   currentCategory: number = 0;
 
@@ -45,8 +48,7 @@ export class BannerComponent implements OnInit {
     this.productView = this.router.url.includes('products') && this.route.snapshot.paramMap.has('id');
     this.cartDetailsView = this.router.url.includes('cart-details');
     this.checkoutView = this.router.url.includes('checkout');
-
-    console.debug(this.checkoutView)
+    this.adminView = this.router.url.includes('admin');
 
     this.route.params.subscribe(() => {
       if(this.route.snapshot.paramMap.has('id') && !this.router.url.includes('products')){
