@@ -10,7 +10,6 @@ import {OKTA_CONFIG, OktaAuthGuard, OktaCallbackComponent} from "@okta/okta-angu
 import appConfig from "./config/app-config";
 import {OktaAuth} from "@okta/okta-auth-js";
 import {LoginComponent} from "./components/admin/login/login.component";
-import {AdminPageComponent} from "./components/admin/admin-page/admin-page.component";
 
 const oktaConfig = appConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -21,16 +20,24 @@ function onAuthRequired(oktaAuth: OktaAuth, injector: Injector) {
 }
 
 const routes: Routes = [
+  /*** Admin part ***/
   {path: 'logAdmin/callback', component: OktaCallbackComponent},
   {path: 'logAdmin', component: LoginComponent},
-  {path: 'admin', component: AdminPageComponent, canActivate: [OktaAuthGuard], data: {onAuthRequired: onAuthRequired}},
+  {path: 'admin', canActivate: [OktaAuthGuard], data: {onAuthRequired: onAuthRequired},
+  loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)},
+
+  /*** Checkout part ***/
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
+
+  /*** Product part ***/
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
+
+  /*** General part ***/
   {path: 'home', component: HomeComponent, resolve: {productCategories: ProductCategoryResolver}},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}

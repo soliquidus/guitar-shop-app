@@ -1,5 +1,5 @@
 <!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky" *ngIf="!isAdmin">
+<header class="header-area header-sticky">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -10,17 +10,8 @@
           </a>
           <!-- ***** Menu ***** -->
           <ul class="nav" [ngStyle]="{'display': dropMenu ? 'block' : ''}">
-            <li class="scroll-to-section">
-              <a routerLink="/home" routerLinkActive="active">Home</a>
-            </li>
-            <li *ngFor="let productCategory of productCategories" class="scroll-to-section">
-              <a routerLink="/category/{{productCategory.id}}" routerLinkActive="active" (click)="dropMenu = false">
-                {{productCategory.categoryName}}
-              </a>
-            </li>
-<!--            <li><app-login-status></app-login-status></li>-->
-            <li><app-cart-status></app-cart-status></li>
-            <li><app-search></app-search></li>
+            <li><p>Well, hello {{userFullName}}!</p></li>
+            <li><a class="logout" (click)="logout()">Logout</a></li>
           </ul>
           <!-- ***** Drop down menu for responsiveness ***** -->
           <a [className]="dropMenu ? 'menu-trigger active' : 'menu-trigger'"

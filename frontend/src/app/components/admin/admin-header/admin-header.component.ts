@@ -1,15 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {Roles} from "../../../common/enum/roles";
 import {OKTA_AUTH, OktaAuthStateService} from "@okta/okta-angular";
 import {OktaAuth} from "@okta/okta-auth-js";
 
 @Component({
-  selector: 'app-login-status',
-  templateUrl: './login-status.component.html',
-  styleUrls: ['./login-status.component.scss']
+  selector: 'app-admin-header',
+  templateUrl: './admin-header.component.html',
+  styleUrls: ['./admin-header.component.scss']
 })
-export class LoginStatusComponent implements OnInit {
+export class AdminHeaderComponent implements OnInit {
+  dropMenu: boolean = false;
   isAuthenticated: boolean = false;
   userFullName: string = '';
+  sessionStorage: Storage = sessionStorage;
 
   constructor(
     private oktaAuthService: OktaAuthStateService,
@@ -40,5 +43,7 @@ export class LoginStatusComponent implements OnInit {
   logout() {
     // Terminates the session with Okta and removes current tokens.
     this.oktaAuth.signOut();
+    this.sessionStorage.clear();
+    this.sessionStorage.setItem('Role', Roles.ANONYMOUS);
   }
 }

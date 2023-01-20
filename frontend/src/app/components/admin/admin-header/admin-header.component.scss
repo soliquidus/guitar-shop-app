@@ -1,0 +1,28 @@
+@import "../../../../colors";
+@import "../../shared/header/header.component";
+
+li {
+  p {
+    margin: 7px 0 0 0;
+  }
+
+  .logout {
+    font-size: 8px;
+    font-weight: normal !important;
+    color: $color_2 !important;
+    background-color: $background-color_9;
+    border-radius: 43px;
+    border: 1px solid #fff;
+    padding: 0 25px;
+    display: inline-block;
+    transition: all .3s;
+
+    &:hover {
+      cursor: pointer;
+      font-size: 8px;
+      font-weight: 900 !important;
+      color: $color_1 !important;
+      background-color: $background-color_2;
+    }
+  }
+}

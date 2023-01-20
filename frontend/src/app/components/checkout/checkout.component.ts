@@ -13,7 +13,6 @@ import {OrderItem} from "../../common/models/orderItem";
 import {Purchase} from "../../common/models/purchase";
 import {Customer} from "../../common/models/customer";
 import {Address} from "../../common/models/address";
-import {ProductCategory} from "../../common/models/productCategory";
 
 @Component({
   selector: 'app-checkout',
@@ -21,8 +20,6 @@ import {ProductCategory} from "../../common/models/productCategory";
   styleUrls: ['./checkout.component.scss', '../../../assets/styles/font-awesome.css']
 })
 export class CheckoutComponent implements OnInit {
-  productCategories: ProductCategory[] = []
-
   checkoutFormGroup!: FormGroup;
   totalPrice = 0;
   totalQuantity = 0;

@@ -13,18 +13,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {SearchComponent} from './components/shared/search/search.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ProductDetailsComponent} from './components/product/product-details/product-details.component';
-import {BannerComponent} from './components/shared/banner/banner.component';
 import {FooterComponent} from './components/shared/footer/footer.component';
 import {CartStatusComponent} from './components/cart/cart-status/cart-status.component';
 import {CartDetailsComponent} from './components/cart/cart-details/cart-details.component';
 import {CheckoutComponent} from './components/checkout/checkout.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {OrderSummaryComponent} from './components/shared/order-summary/order-summary.component';
-import {LoginComponent} from './components/admin/login/login.component';
-import {LoginStatusComponent} from './components/admin/login-status/login-status.component';
-import {OktaAuthModule} from "@okta/okta-angular";
-import {ProductManagementComponent} from './components/admin/management/product-management/product-management.component';
-import {AdminPageComponent} from './components/admin/admin-page/admin-page.component';
+import {AdminModule} from "./components/admin/admin.module";
+import {SharedModule} from "./components/shared/shared.module";
+import {AdminRoutingModule} from "./components/admin/admin-routing.module";
 
 @NgModule({
   declarations: [
@@ -34,16 +31,11 @@ import {AdminPageComponent} from './components/admin/admin-page/admin-page.compo
     ProductListComponent,
     SearchComponent,
     ProductDetailsComponent,
-    BannerComponent,
     FooterComponent,
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
     OrderSummaryComponent,
-    LoginComponent,
-    LoginStatusComponent,
-    ProductManagementComponent,
-    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +44,9 @@ import {AdminPageComponent} from './components/admin/admin-page/admin-page.compo
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    OktaAuthModule
+    AdminModule,
+    SharedModule,
+    AdminRoutingModule
   ],
   exports: [
     HeaderComponent
