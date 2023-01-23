@@ -5,6 +5,8 @@ import com.pazdev.guitarshop.entity.Product;
 import com.pazdev.guitarshop.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/products/")
@@ -26,8 +28,9 @@ public class ProductController {
         this.productService.addProduct(productDto);
     }
 
-    @PutMapping("/product/{id}")
-    public void updateProduct(@PathVariable Long id, @RequestBody ProductDto updatedProduct) {
-        this.productService.updateProduct(id, updatedProduct);
+    @PutMapping("/{id}")
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto updatedProduct) {
+        updatedProduct.getProduct().setLastUpdated(new Date());
+        return this.productService.updateProduct(id, updatedProduct);
     }
 }

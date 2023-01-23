@@ -5,6 +5,7 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
 import appConfig from "../../config/app-config";
 import {OktaAuth} from "@okta/okta-auth-js";
 import {ProductManagementComponent} from "./management/product-management/product-management.component";
+import {ProductCategoryResolver} from "../../services/resolvers/product-category.resolver";
 
 const oktaConfig = appConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -17,13 +18,13 @@ function onAuthRequired(oktaAuth: OktaAuth, injector: Injector) {
 const adminRoutes: Routes = [
   {path: '', component: AdminPageComponent, canActivate: [OktaAuthGuard],
     data: {onAuthRequired: onAuthRequired}, children: [
-      {path: 'product', component: ProductManagementComponent}
+      {path: 'product', component: ProductManagementComponent, resolve: {products: ProductCategoryResolver}}
     ]},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule],
-  providers: [{provide: OKTA_CONFIG, useValue: {oktaAuth, onAuthRequired}}]
+  providers: [ProductCategoryResolver ,{provide: OKTA_CONFIG, useValue: {oktaAuth, onAuthRequired}}]
 })
 export class AdminRoutingModule { }

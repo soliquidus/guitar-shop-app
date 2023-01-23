@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {ProductInterface} from "../common/interface/productInterface";
+import {ProductInterface, ProductUpdateInterface} from "../common/interface/productInterface";
 import {LogService} from "./log.service";
 import {ProductCategoryInterface} from "../common/interface/productCategoryInterface";
 import {Product} from "../common/models/product";
@@ -48,9 +48,16 @@ export class ProductService {
     );
   }
 
-  updateProduct(id: number, product: ProductUpdate): Observable<ProductUpdate> {
+  updateProduct(id: number, product: ProductUpdate) {
     let url = `${this.baseUrl}/${id}`;
-    return this.httpClient.put<ProductUpdate>(url, product);
+    let productToUpdate: ProductUpdateInterface = {
+      productCategory: product.category,
+      product: product
+    }
+
+    this.httpClient.put<ProductUpdateInterface>(url, productToUpdate).subscribe(
+      data => this.logger.info('Admin updating product', JSON.stringify(data))
+    );
   }
 
   searchProducts(keyword: string): Observable<Product[]> {
@@ -66,7 +73,7 @@ export class ProductService {
     return this.httpClient.get<ProductInterface>(searchUrl);
   }
 
-  private getProducts(searchUrl: string): Observable<Product[]> {
+   getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<ProductInterface>(searchUrl).pipe(
       map(response => response._embedded.products)
     );

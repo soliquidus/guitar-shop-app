@@ -1,11 +1,6 @@
 package com.pazdev.guitarshop.config;
 
-import javax.persistence.EntityManager;
-
-import javax.persistence.metamodel.EntityType;
-
 import com.pazdev.guitarshop.service.projection.ProductCategoryProjection;
-import com.pazdev.guitarshop.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +9,8 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import javax.persistence.EntityManager;
+import javax.persistence.metamodel.EntityType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -32,14 +29,14 @@ public class DataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.PATCH};
-
-        // disable HTTP methods for given classes: PUT, POST, DELETE and PATCH
-        disableHttpMethods(Product.class, config, unsupportedActions);
-        disableHttpMethods(ProductCategory.class, config, unsupportedActions);
-        disableHttpMethods(Country.class, config, unsupportedActions);
-        disableHttpMethods(State.class, config, unsupportedActions);
-        disableHttpMethods(Order.class, config, unsupportedActions);
+//        HttpMethod[] unsupportedActions = {HttpMethod.DELETE, HttpMethod.PATCH};
+//
+//        // disable HTTP methods for given classes: PUT, POST, DELETE and PATCH
+//        disableHttpMethods(Product.class, config, unsupportedActions);
+//        disableHttpMethods(ProductCategory.class, config, unsupportedActions);
+//        disableHttpMethods(Country.class, config, unsupportedActions);
+//        disableHttpMethods(State.class, config, unsupportedActions);
+//        disableHttpMethods(Order.class, config, unsupportedActions);
 
         config.getProjectionConfiguration()
                 .addProjection(ProductCategoryProjection.class);

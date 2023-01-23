@@ -6,7 +6,6 @@ import {LogService} from "../../../services/log.service";
 import {CartItem} from "../../../common/models/cartItem";
 import {CartService} from "../../../services/cart.service";
 
-const IMAGE_URL: string = '../../../../assets/images/';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +19,6 @@ export class ProductListComponent implements OnInit {
   previousCategoryId: number = 1;
   searchMode: boolean = false;
   allProducts: boolean = false;
-  imageUrls: string[] = [];
 
   // pagination
   pageNumber: number = 1;
@@ -35,20 +33,7 @@ export class ProductListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private logger: LogService
-  ) {
-    // Banner images urls
-    const productsUrl = `url(${IMAGE_URL}all-products.png)`;
-    const guitarUrl = `url(${IMAGE_URL}guitar-banner.png)`;
-    const acousticUrl = `url(${IMAGE_URL}acoustic-banner.png)`;
-    const bassUrl = `url(${IMAGE_URL}bass-banner.png)`;
-    const accessoryUrl = `url(${IMAGE_URL}accessories-banner.png)`;
-
-    this.imageUrls.push(productsUrl);
-    this.imageUrls.push(guitarUrl);
-    this.imageUrls.push(acousticUrl);
-    this.imageUrls.push(bassUrl);
-    this.imageUrls.push(accessoryUrl);
-  }
+  ) {}
 
   ngOnInit(): void {
        this.route.params.subscribe({

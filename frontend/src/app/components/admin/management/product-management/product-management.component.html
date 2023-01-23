@@ -1,1 +1,195 @@
-<p>product-management works!</p>
+<div class="wrapper d-flex align-items-stretch">
+  <!---- Sidebar start ---->
+  <nav id="sidebar">
+    <div class="custom-menu">
+      <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <i class="fa fa-long-arrow-left"></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+    </div>
+    <div class="p-4">
+      <h1><a href="index.html" class="logo">Products<span>Admin tools</span></a></h1>
+      <ul class="list-unstyled components mb-5">
+        <li *ngFor="let category of productWithCategories" [ngClass]="{active: category.id === products[0].id}">
+          <a (click)="showProductsByCategory(category.id)"><span class="fa fa-hand-o-right"> </span>  {{category.categoryName}}</a>
+        </li>
+      </ul>
+
+      <div class="mb-5">
+        <h3 class="h6 mb-3">Search a product</h3>
+        <form action="#" class="subscribe-form">
+          <div class="form-group d-flex">
+            <div class="icon"><span class="icon-paper-plane"></span></div>
+            <input type="text" class="form-control" placeholder="Enter a brand or name">
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!---- Sidebar end ---->
+
+  <!---- Product management table start ---->
+  <div class="container">
+    <div class="row flex-lg-nowrap">
+      <div class="row flex-lg-nowrap">
+        <div class="col mb-3">
+          <div class="card-body">
+            <section class="ftco-section">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Product Management</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-wrap">
+                      <table class="table table-responsive-xl">
+                        <thead>
+                        <tr>
+                          <!--                          <th>&nbsp;</th>-->
+                          <th></th>
+                          <th>Model</th>
+                          <th>Brand</th>
+                          <th>Status</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="alert" role="alert" *ngFor="let product of products[0].products">
+                          <!--                          <td>-->
+                          <!--                            <label class="checkbox-wrap checkbox-primary">-->
+                          <!--                              <input type="checkbox">-->
+                          <!--                              <span class="checkmark"></span>-->
+                          <!--                            </label>-->
+                          <!--                          </td>-->
+                          <td>
+                            <div class="img" [ngStyle]="{'background-image': 'url(' + product.imageUrl + ')'}"></div>
+                          </td>
+                          <td class="d-flex align-items-center">
+                            <div class="pl-3 email">
+                              <span>{{product.name}}</span>
+                              <span>
+                                Added: {{product.dateCreated | date}}  |
+                                Stock: {{product.unitsInStock}}  |
+                                Price: {{product.unitPrice | currency: 'USD'}}
+                              </span>
+                            </div>
+                          </td>
+                          <td>{{product.brand}}</td>
+                          <td *ngIf="product.active" class="status"><span class="active">Active</span></td>
+                          <td *ngIf="!product.active" class="status"><span class="deactivated">Deactivated</span></td>
+                          <td>
+                            <button type="button"
+                                    class="edit"
+                                    data-bs-toggle="modal" data-bs-target="#productFormModal"
+                                    aria-label="Edit"
+                                    (click)="getProductInfo(product, category)">
+                              <span aria-hidden="true"><i class="fa fa-pencil"></i></span>
+                            </button>
+                          </td>
+                          <td>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                            </button>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!---- Product management table end ---->
+
+      <!--  Modal start  -->
+      <div class="modal fade" aria-labelledby="productFormModalLabel" aria-hidden="true" tabindex="-1" id="productFormModal">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="section">
+              <div class="container">
+                <form class="form" [formGroup]="updateFormGroup" (ngSubmit)="onSubmit()">
+                  <div class="center">
+                    <div class="modal-header">
+                      <h1>Update product information</h1>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                          <div class="form-area" formGroupName="priceStock">
+                            <h3><i class="fa fa-archive"></i> Price & stock</h3>
+                            <div class="input-box">
+                              <input type="text" required="required" formControlName="unitPrice">
+                              <span>Unit Price</span>
+                            </div>
+                            <div class="input-box">
+                              <input type="text" required="required" formControlName="stock">
+                              <span>Units in stock</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-area" formGroupName="origin">
+                            <h3><i class="fa fa-music"></i> Instrument</h3>
+                            <div class="input-box">
+                              <select formControlName="brand">
+                                <option *ngFor="let brand of brands">{{brand}}</option>
+                              </select>
+                              <span>Brand</span>
+                            </div>
+                            <div class="input-box">
+                              <select formControlName="category">
+                                <option *ngFor="let category of categories" [ngValue]="category">{{category.categoryName}}</option>
+                              </select>
+                              <span>Product Category</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-area" formGroupName="generalInfo">
+                            <h3><i class="fa fa-info"></i> General Information</h3>
+                            <div class="input-box">
+                              <input type="text" required="required" formControlName="model">
+                              <span>Model</span>
+                            </div>
+                            <div class="input-box">
+                              <textarea rows="7" cols="35" required="required" formControlName="description">
+                              </textarea>
+                              <span>Description</span>
+                            </div>
+                          </div>
+                        </div>
+                        <!--                        <div class="col-lg-6">-->
+                        <!--                          <div class="form-area">-->
+                        <!--                            <h3><i class="fa fa-photo"></i> Other</h3>-->
+                        <!--                        <div class="input-box">-->
+                        <!--                          <span class="picture">Change picture</span>-->
+                        <!--                          <button class="upload">Upload file</button>-->
+                        <!--                        </div>-->
+                        <!--                            <div class="form-check form-switch">-->
+                        <!--                              <input class="form-check-input" type="checkbox">-->
+                        <!--                              <span class="picture">Activation</span>-->
+                        <!--                            </div>-->
+                        <!--                          </div>-->
+                        <!--                        </div>-->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="update justify-content-center">
+                    <input type="submit" value="Update product" data-bs-dismiss="modal">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  Modal end  -->
+    </div>
+  </div>
+</div>

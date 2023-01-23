@@ -1,13 +1,12 @@
 import {Product} from "./product";
 import {ProductCategory} from "./productCategory";
 
-export class ProductUpdate {
-  productCategory: ProductCategory
-  product: Product
+export class ProductUpdate extends Product{
+  category: ProductCategory
 
 
-  constructor(productCategory: ProductCategory, product: Product) {
-    this.productCategory = productCategory;
-    this.product = product;
+  constructor(id: number, sku: string, brand: string, name: string, description: string, unitPrice: number, imageUrl: string, active: boolean, unitsInStock: number, dateCreated: Date, lastUpdated: Date, productCategory: ProductCategory) {
+    super(id, sku, brand, name, description, unitPrice, imageUrl, active, unitsInStock, dateCreated, lastUpdated);
+    this.category = productCategory;
   }
 }

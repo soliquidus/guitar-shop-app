@@ -33,8 +33,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateProduct(Long id, ProductDto productDto) {
-
+    public ProductDto updateProduct(Long id, ProductDto productDto) {
         this.productRepository.findById(id).map(product -> {
             product.setCategory(productDto.getProduct().getCategory());
             product.setBrand(productDto.getProduct().getBrand());
@@ -42,10 +41,14 @@ public class ProductServiceImpl implements ProductService {
             product.setDescription(productDto.getProduct().getDescription());
             product.setSku(productDto.getProduct().getSku());
             product.setName(productDto.getProduct().getName());
+            product.setUnitPrice(productDto.getProduct().getUnitPrice());
+            product.setUnitsInStock(productDto.getProduct().getUnitsInStock());
+            product.setDateCreated(productDto.getProduct().getDateCreated());
             product.setImageUrl(productDto.getProduct().getImageUrl());
             product.setLastUpdated(productDto.getProduct().getLastUpdated());
             return this.productRepository.save(product);
         }).orElseThrow(() -> new ResourceNotFound(String.format("User with id %s not found", id)));
+        return productDto;
     }
 
     @Override

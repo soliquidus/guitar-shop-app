@@ -103,7 +103,7 @@
   height: 50px;
   margin-bottom: 50px;
 
-  input, select {
+  input, textarea, select {
     position: absolute;
     top: 0;
     left: 0;
@@ -155,7 +155,7 @@
   }
 
   &:hover {
-    [type="submit"] {
+    [type="submit"] [type="button"] {
       background-color: #ae0606;
     }
   }

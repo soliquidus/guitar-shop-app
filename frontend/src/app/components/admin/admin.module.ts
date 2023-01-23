@@ -9,6 +9,8 @@ import {ProductManagementComponent} from "./management/product-management/produc
 import {OktaAuthModule} from "@okta/okta-angular";
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -16,15 +18,17 @@ import {RouterModule} from "@angular/router";
     AdminPageComponent,
     AdminHeaderComponent,
     LoginComponent,
-    ProductManagementComponent
+    ProductManagementComponent,
+    ModalComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    RouterModule,
-    OktaAuthModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        RouterModule,
+        OktaAuthModule,
+        SharedModule,
+        ReactiveFormsModule
+    ],
   exports: [AdminHeaderComponent, AdminPageComponent, LoginComponent, ProductManagementComponent]
 })
 export class AdminModule { }

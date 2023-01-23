@@ -1,4 +1,6 @@
 import {Product} from "../models/product";
+import {ProductUpdate} from "../models/productUpdate";
+import {ProductCategory} from "../models/productCategory";
 
 export interface ProductInterface {
   _embedded: {
@@ -10,4 +12,9 @@ export interface ProductInterface {
     totalPages: number,
     number: number
   }
+}
+
+export interface ProductUpdateInterface {
+  productCategory: ProductCategory
+  product: ProductUpdate
 }
