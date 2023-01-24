@@ -1,6 +1,6 @@
-export class Product {
+import {MainModel} from "./mainModel";
 
-  public id: number;
+export class Product extends MainModel{
   public sku: string;
   public brand: string;
   public name: string;
@@ -13,8 +13,8 @@ export class Product {
   public lastUpdated: Date;
 
 
-  constructor(id: number, sku: string, brand: string, name: string, description: string, unitPrice: number, imageUrl: string, active: boolean, unitsInStock: number, dateCreated: Date, lastUpdated: Date) {
-    this.id = id;
+  constructor(sku: string, brand: string, name: string, description: string, unitPrice: number, imageUrl: string, active: boolean, unitsInStock: number, dateCreated: Date, lastUpdated: Date) {
+    super();
     this.sku = sku;
     this.brand = brand;
     this.name = name;

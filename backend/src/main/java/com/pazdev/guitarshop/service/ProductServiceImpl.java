@@ -17,7 +17,8 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     public Product getProduct(Long id) {
-        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFound(String.format("User with id %s not found", id)));
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFound(String.format("Product with id %s not found", id)));
     }
 
     @Override
@@ -59,5 +60,14 @@ public class ProductServiceImpl implements ProductService {
             return this.productRepository.save(product);
         }).orElseThrow(() -> new NullPointerException(String.format("Error while updating stock quantity %d for product id %d", id, quantity)) {
         });
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        try {
+            this.productRepository.deleteById(id);
+        } catch (ResourceNotFound e) {
+            throw new ResourceNotFound(String.format("Product with id %s not found", id));
+        }
     }
 }

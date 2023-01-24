@@ -1,7 +1,7 @@
 import {Product} from "./product";
+import {MainModel} from "./mainModel";
 
-export class CartItem {
-  id: number;
+export class CartItem extends MainModel{
   sku: string;
   name: string;
   imageUrl: string;
@@ -10,7 +10,7 @@ export class CartItem {
   unitsInStock: number;
 
   constructor(product: Product) {
-    this.id = product.id;
+    super(product.id);
     this.sku = product.sku;
     this.name = product.name;
     this.imageUrl = product.imageUrl;

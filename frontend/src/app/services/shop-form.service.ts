@@ -18,12 +18,19 @@ export class ShopFormService {
   constructor(private httpClient: HttpClient) {
   }
 
+  /**
+   * Get all existing countries
+   */
   getCountries(): Observable<Country[]> {
     return this.httpClient.get<CountryInterface>(this.countriesUrl).pipe(
       map(response => response._embedded.countries)
     );
   }
 
+  /**
+   * Get states by given country
+   * @param countryCode the country code
+   */
   getStates(countryCode: string): Observable<State[]> {
     const searchUrl = `${this.statesUrl}/search/findByCountryCode?code=${countryCode}`;
 
@@ -32,6 +39,10 @@ export class ShopFormService {
     );
   }
 
+  /**
+   * Determine the months to display depending on starting month
+   * @param startMonth the starting month
+   */
   getCreditCardMonths(startMonth: number): Observable<number[]> {
     let data: number[] = [];
 
@@ -42,6 +53,9 @@ export class ShopFormService {
     return of(data);
   }
 
+  /**
+   * Determine the years selectable
+   */
   getCreditCardYears(): Observable<number[]> {
     let data: number[] = [];
 

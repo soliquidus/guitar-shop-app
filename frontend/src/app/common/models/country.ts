@@ -1,11 +1,12 @@
-export class Country {
-  id: number;
+import {MainModel} from "./mainModel";
+
+export class Country extends MainModel{
   code: string;
   name: string;
 
 
   constructor(id: number, code: string, name: string) {
-    this.id = id;
+    super(id);
     this.code = code;
     this.name = name;
   }

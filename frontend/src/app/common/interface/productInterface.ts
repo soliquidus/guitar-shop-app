@@ -1,5 +1,5 @@
 import {Product} from "../models/product";
-import {ProductUpdate} from "../models/productUpdate";
+import {ProductDto} from "../models/productDto";
 import {ProductCategory} from "../models/productCategory";
 
 export interface ProductInterface {
@@ -14,7 +14,7 @@ export interface ProductInterface {
   }
 }
 
-export interface ProductUpdateInterface {
+export interface ProductDtoInterface {
   productCategory: ProductCategory
-  product: ProductUpdate
+  product: ProductDto
 }

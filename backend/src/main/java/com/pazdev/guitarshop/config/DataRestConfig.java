@@ -1,5 +1,6 @@
 package com.pazdev.guitarshop.config;
 
+import com.pazdev.guitarshop.entity.*;
 import com.pazdev.guitarshop.service.projection.ProductCategoryProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,14 +30,14 @@ public class DataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        HttpMethod[] unsupportedActions = {HttpMethod.DELETE, HttpMethod.PATCH};
-//
-//        // disable HTTP methods for given classes: PUT, POST, DELETE and PATCH
-//        disableHttpMethods(Product.class, config, unsupportedActions);
-//        disableHttpMethods(ProductCategory.class, config, unsupportedActions);
-//        disableHttpMethods(Country.class, config, unsupportedActions);
-//        disableHttpMethods(State.class, config, unsupportedActions);
-//        disableHttpMethods(Order.class, config, unsupportedActions);
+        HttpMethod[] unsupportedActions = {HttpMethod.PATCH};
+
+        // disable HTTP methods for given classes: PATCH
+        disableHttpMethods(Product.class, config, unsupportedActions);
+        disableHttpMethods(ProductCategory.class, config, unsupportedActions);
+        disableHttpMethods(Country.class, config, unsupportedActions);
+        disableHttpMethods(State.class, config, unsupportedActions);
+        disableHttpMethods(Order.class, config, unsupportedActions);
 
         config.getProjectionConfiguration()
                 .addProjection(ProductCategoryProjection.class);

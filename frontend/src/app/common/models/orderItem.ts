@@ -4,7 +4,7 @@ export class OrderItem {
   imageUrl: string;
   unitPrice: number;
   quantity: number;
-  productId: number;
+  productId: number | undefined;
 
 
   constructor(cartItem: CartItem) {

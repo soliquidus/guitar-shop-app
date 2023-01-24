@@ -33,4 +33,9 @@ public class ProductController {
         updatedProduct.getProduct().setLastUpdated(new Date());
         return this.productService.updateProduct(id, updatedProduct);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id){
+        this.productService.deleteProduct(id);
+    }
 }
