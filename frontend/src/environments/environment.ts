@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   shopApiUrl: 'http://localhost:4444/api',
-
   oktaConfig: {
     clientId: '{yourOktaApplicationClientId}',
     server: '{yourOktaDevServer}'

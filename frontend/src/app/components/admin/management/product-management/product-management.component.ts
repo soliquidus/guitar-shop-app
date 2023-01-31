@@ -63,10 +63,12 @@ export class ProductManagementComponent implements OnInit {
       }),
       priceStock: this.formBuilder.group({
         unitPrice: new FormControl(this.product ? this.product.unitPrice : '', [
-          Validators.required
+          Validators.required,
+          Validators.pattern('[+-]?([0-9]*[.])?[0-9]+')
         ]),
         stock: new FormControl(this.product ? this.product.unitsInStock : '', [
-          Validators.required
+          Validators.required,
+          Validators.pattern('^[0-9]*$')
         ])
       }),
       origin: this.formBuilder.group({

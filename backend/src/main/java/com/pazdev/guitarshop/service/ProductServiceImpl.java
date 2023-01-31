@@ -2,7 +2,6 @@ package com.pazdev.guitarshop.service;
 
 import com.pazdev.guitarshop.dao.ProductRepository;
 import com.pazdev.guitarshop.dto.ProductDto;
-import com.pazdev.guitarshop.entity.Product;
 import com.pazdev.guitarshop.entity.ProductCategory;
 import com.pazdev.guitarshop.exception.ResourceNotFound;
 import lombok.AllArgsConstructor;
@@ -15,11 +14,6 @@ import javax.transaction.Transactional;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-
-    public Product getProduct(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFound(String.format("Product with id %s not found", id)));
-    }
 
     @Override
     @Transactional
@@ -70,4 +64,9 @@ public class ProductServiceImpl implements ProductService {
             throw new ResourceNotFound(String.format("Product with id %s not found", id));
         }
     }
+//
+//    @Override
+//    public List<Product> getByDate(Long id) {
+//        return this.productRepository.getAllByCategoryAndOrderByDateCreated(id);
+//    }
 }

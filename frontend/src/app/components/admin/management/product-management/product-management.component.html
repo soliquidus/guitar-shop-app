@@ -83,7 +83,8 @@
                           <td *ngIf="product.active" class="status"><span class="active">Active</span></td>
                           <td *ngIf="!product.active" class="status"><span class="deactivated">Deactivated</span></td>
                           <td>
-                            <button type="button" class="edit" data-bs-toggle="modal" data-bs-target="#productFormModal"
+                            <button type="button" class="edit" data-bs-toggle="modal"
+                                    data-bs-target="#productUpdateFormModal"
                                     aria-label="Edit" (click)="getProductInfo(product, category)">
                               <span aria-hidden="true"><i class="fa fa-pencil"></i></span>
                             </button>
@@ -117,7 +118,7 @@
                 <form class="form" [formGroup]="formGroup" (ngSubmit)="onCreate()">
                   <div class="center">
                     <div class="modal-header">
-                      <h1>Update product information</h1>
+                      <h1>Add a new product</h1>
                     </div>
                     <div class="modal-body">
                       <div class="row justify-content-center">
@@ -183,7 +184,7 @@
                     </div>
                   </div>
                   <div class="update justify-content-center">
-                    <input type="submit" value="Update product" data-bs-dismiss="modal">
+                    <input type="submit" value="Add product" data-bs-dismiss="modal">
                   </div>
                 </form>
               </div>
@@ -194,8 +195,8 @@
       <!--  Create product Modal end  -->
 
       <!--  Update product Modal start  -->
-      <div class="modal fade" aria-labelledby="productFormModalLabel" aria-hidden="true" tabindex="-1"
-           id="productFormModal">
+      <div class="modal fade" aria-labelledby="productUpdateFormModalLabel" aria-hidden="true" tabindex="-1"
+           id="productUpdateFormModal">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="section">
@@ -210,45 +211,97 @@
                         <div class="col-lg-6">
                           <div class="form-area" formGroupName="priceStock">
                             <h3><i class="fa fa-archive"></i> Price & stock</h3>
-                            <div class="input-box">
+                            <div class="input-box" [ngClass]="{'error': unitPrice?.invalid &&
+                                     (unitPrice?.dirty || unitPrice?.touched) ? ' error' : ''}">
                               <input type="text" required="required" formControlName="unitPrice">
                               <span>Unit Price</span>
                             </div>
-                            <div class="input-box">
+                            <div *ngIf="unitPrice?.invalid && (unitPrice?.dirty || unitPrice?.touched)"
+                                 class="input-box error">
+                              <div *ngIf="unitPrice?.errors?.['required']">
+                                Unit price must be indicated
+                              </div>
+                              <div *ngIf="unitPrice?.errors?.['pattern']">
+                                Numbers only
+                              </div>
+                            </div>
+                            <div class="input-box" [ngClass]="{'error': unitPrice?.invalid &&
+                                     (unitPrice?.dirty || unitPrice?.touched) ? ' error' : ''}">
                               <input type="text" required="required" formControlName="stock">
                               <span>Units in stock</span>
+                            </div>
+                            <div *ngIf="stock?.invalid && (stock?.dirty || stock?.touched)" class="input-box error">
+                              <div *ngIf="stock?.errors?.['required']">
+                                Stock must be indicated
+                              </div>
+                              <div *ngIf="stock?.errors?.['pattern']">
+                                Numbers only
+                              </div>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-area" formGroupName="origin">
                             <h3><i class="fa fa-music"></i> Instrument</h3>
-                            <div class="input-box">
+                            <div class="input-box" [ngClass]="{'error': brand?.invalid &&
+                            (brand?.dirty || brand?.touched) ? ' error' : ''}">
                               <select formControlName="brand">
                                 <option *ngFor="let brand of brands">{{brand}}</option>
                               </select>
                               <span>Brand</span>
                             </div>
-                            <div class="input-box">
-                              <select formControlName="category">
-                                <option *ngFor="let category of categories"
-                                        [ngValue]="category">{{category.categoryName}}</option>
-                              </select>
+                            <div *ngIf="brand?.invalid && (brand?.dirty || brand?.touched)" class="input-box error">
+                              <div *ngIf="brand?.errors?.['required']">
+                                Brand must be indicated
+                              </div>
+                            </div>
+                            <div class="input-box" [ngClass]="{'error': productCategory?.invalid &&
+                                 (productCategory?.dirty || productCategory?.touched) ? ' error' : ''}"><select
+                              formControlName="category">
+                              <option *ngFor="let category of categories"
+                                      [ngValue]="category">{{category.categoryName}}</option>
+                            </select>
                               <span>Product Category</span>
+                            </div>
+                            <div
+                              *ngIf="productCategory?.invalid && (productCategory?.dirty || productCategory?.touched)"
+                              class="input-box error">
+                              <div *ngIf="productCategory?.errors?.['required']">
+                                Category must be indicated
+                              </div>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-area" formGroupName="generalInfo">
                             <h3><i class="fa fa-info"></i> General Information</h3>
-                            <div class="input-box">
+                            <div class="input-box" [ngClass]="{'error': model?.invalid &&
+                                 (model?.dirty || model?.touched) ? ' error' : ''}">
                               <input type="text" required="required" formControlName="model">
                               <span>Model</span>
                             </div>
-                            <div class="input-box">
+                            <div *ngIf="model?.invalid && (model?.dirty || model?.touched)" class="input-box error">
+                              <div *ngIf="model?.errors?.['required']">
+                                Model name must be indicated
+                              </div>
+                              <div *ngIf="model?.errors?.['minLength']">
+                                Model must be at least 10 characters long
+                              </div>
+                            </div>
+                            <div class="input-box" [ngClass]="{'error': description?.invalid &&
+                                 (description?.dirty || description?.touched) ? ' error' : ''}">
                               <textarea rows="7" cols="35" required="required" formControlName="description">
                               </textarea>
                               <span>Description</span>
+                            </div>
+                            <div *ngIf="description?.invalid &&
+                            (description?.dirty || description?.touched)" class="input-box error">
+                              <div *ngIf="description?.errors?.['required']">
+                                Unit price must be indicated
+                              </div>
+                              <div *ngIf="model?.errors?.['minLength']">
+                                Description must be at least 30 characters long
+                              </div>
                             </div>
                           </div>
                         </div>
