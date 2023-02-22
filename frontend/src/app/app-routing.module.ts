@@ -11,7 +11,7 @@ import appConfig from "./config/app-config";
 import {OktaAuth} from "@okta/okta-auth-js";
 import {LoginComponent} from "./components/admin/login/login.component";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {AuthInterceptor} from "./services/security/auth.interceptor";
+import {AuthInterceptor} from "./config/security/auth.interceptor";
 
 const oktaConfig = appConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -55,8 +55,11 @@ const routes: Routes = [
     }
   )],
   exports: [RouterModule],
-  providers: [ProductCategoryResolver, {provide: OKTA_CONFIG, useValue: {oktaAuth, onAuthRequired}},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
+  providers: [
+    ProductCategoryResolver,
+    {provide: OKTA_CONFIG, useValue: {oktaAuth, onAuthRequired}},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ]
 })
 export class AppRoutingModule {
 }

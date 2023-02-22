@@ -218,7 +218,7 @@ export class ProductManagementComponent implements OnInit {
     this.productService.updateProduct(product.id!, product);
 
     // recharge page with new infos
-    location.reload();
+    // location.reload();
   }
 
   onDelete() {

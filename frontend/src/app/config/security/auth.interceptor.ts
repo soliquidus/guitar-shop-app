@@ -23,7 +23,8 @@ export class AuthInterceptor implements HttpInterceptor {
     // Only add an access token for secured endpoints
     const securedEndpoints = [`${environment.shopApiUrl}/products/`];
 
-    if (securedEndpoints.some(url => request.urlWithParams.includes(url))) {
+    if (securedEndpoints.some(url => request.urlWithParams.includes(url) && (request.method === "POST"
+      || request.method === "PUT" || request.method === "DELETE"))) {
       // get access token
       const accessToken = this.oktaAuth.getAccessToken();
 

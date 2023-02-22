@@ -24,7 +24,9 @@ public class SecurityConfiguration {
                                 .antMatchers(HttpMethod.PUT, "/api/products/**")
                                 .authenticated()
                                 .antMatchers(HttpMethod.DELETE, "/api/products/**")
-                                .authenticated();
+                                .authenticated()
+                                .antMatchers(HttpMethod.GET,"/api/products")
+                                .permitAll();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

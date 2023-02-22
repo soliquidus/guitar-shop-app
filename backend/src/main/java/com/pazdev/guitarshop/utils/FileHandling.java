@@ -2,7 +2,7 @@ package com.pazdev.guitarshop.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.pazdev.guitarshop.entity.ClientLogEntry;
+import com.pazdev.guitarshop.dto.ClientLogEntry;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

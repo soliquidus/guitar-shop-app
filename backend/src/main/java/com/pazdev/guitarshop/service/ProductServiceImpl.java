@@ -28,6 +28,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void updateStock(Long id, int quantity) {
+        this.productRepository.findById(id).map(product -> {
+            int stock = product.getUnitsInStock() - quantity;
+            product.setUnitsInStock(stock);
+            return this.productRepository.save(product);
+        }).orElseThrow(() -> new NullPointerException(String
+                .format("Error while updating stock quantity %d for product id %d", quantity, id)) {
+        });
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        try {
+            this.productRepository.deleteById(id);
+        } catch (ResourceNotFound e) {
+            throw new ResourceNotFound(String.format("Product with id %s not found", id));
+        }
+    }
+
+    @Override
     public ProductDto updateProduct(Long id, ProductDto productDto) {
         this.productRepository.findById(id).map(product -> {
             product.setCategory(productDto.getProduct().getCategory());
@@ -44,25 +64,6 @@ public class ProductServiceImpl implements ProductService {
             return this.productRepository.save(product);
         }).orElseThrow(() -> new ResourceNotFound(String.format("User with id %s not found", id)));
         return productDto;
-    }
-
-    @Override
-    public void updateStock(Long id, int quantity) {
-        this.productRepository.findById(id).map(product -> {
-            int stock = product.getUnitsInStock() - quantity;
-            product.setUnitsInStock(stock);
-            return this.productRepository.save(product);
-        }).orElseThrow(() -> new NullPointerException(String.format("Error while updating stock quantity %d for product id %d", id, quantity)) {
-        });
-    }
-
-    @Override
-    public void deleteProduct(Long id) {
-        try {
-            this.productRepository.deleteById(id);
-        } catch (ResourceNotFound e) {
-            throw new ResourceNotFound(String.format("Product with id %s not found", id));
-        }
     }
 //
 //    @Override

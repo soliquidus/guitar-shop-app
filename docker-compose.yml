@@ -6,7 +6,6 @@ services:
   # Frontend Service
   app-client:
     container_name: guitar-shop-client
-    # Use an image built from the specified dockerfile in the `frontend` directory.
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -21,7 +20,7 @@ services:
   # App backend service
   app-server:
     depends_on:
-      - db # This service depends on mysql. Start that first.
+      - app-db # This service depends on mysql. Start that first.
     container_name: guitar-shop-server
     build:
       context: backend
@@ -38,7 +37,7 @@ services:
       - frontend
 
   # Database Service (Mysql)
-  db:
+  app-db:
     container_name: guitar-shop-db
     build:
       context: database

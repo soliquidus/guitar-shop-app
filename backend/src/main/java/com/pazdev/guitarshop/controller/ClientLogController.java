@@ -3,7 +3,7 @@ package com.pazdev.guitarshop.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.pazdev.guitarshop.entity.ClientLogEntry;
+import com.pazdev.guitarshop.dto.ClientLogEntry;
 import com.pazdev.guitarshop.utils.FileHandling;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;

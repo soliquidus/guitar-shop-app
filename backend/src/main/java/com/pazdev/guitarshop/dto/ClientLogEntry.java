@@ -1,4 +1,4 @@
-package com.pazdev.guitarshop.entity;
+package com.pazdev.guitarshop.dto;
 
 import lombok.Data;
 import lombok.Getter;

@@ -51,14 +51,14 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         customer.add(order);
 
-        // update products stock
-        orderItems.forEach(item ->
-                this.productService.updateStock(item.getProductId(), item.getQuantity())
-        );
-
         // save to database
         try {
             customerRepository.save(customer);
+
+            // update products stock
+            orderItems.forEach(item ->
+                    this.productService.updateStock(item.getProductId(), item.getQuantity())
+            );
         } catch (Exception e) {
             throw new NullPointerException();
         }

@@ -1,4 +1,4 @@
-package com.pazdev.guitarshop.entity;
+package com.pazdev.guitarshop.dto;
 
 public enum ClientLogLevel {
     ALL(0, "All"),
@@ -12,7 +12,7 @@ public enum ClientLogLevel {
     private String logLevel;
     private int logNumber;
 
-    private ClientLogLevel(int logNumber, String logLevel){
+    ClientLogLevel(int logNumber, String logLevel){
         this.logLevel = logLevel;
         this.logNumber = logNumber;
     }
