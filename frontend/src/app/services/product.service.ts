@@ -136,7 +136,7 @@ export class ProductService {
       product: product
     }
 
-    this.httpClient.post<ProductDtoInterface>(this.baseUrl + "/", productDto).subscribe(
+    this.httpClient.post<ProductDtoInterface>(this.baseUrl + "/new", productDto).subscribe(
       () => this.logger.info('Admin added a new product', JSON.stringify(productDto))
     )
   }
@@ -149,7 +149,7 @@ export class ProductService {
    * @param product the product DTO object
    */
   updateProduct(id: number, product: ProductDto) {
-    let url = `${this.baseUrl}/${id}`;
+    let url = `${this.baseUrl}/update/${id}`;
     let productToUpdateDto: ProductDtoInterface = {
       productCategory: product.category,
       product: product
@@ -168,7 +168,7 @@ export class ProductService {
    * @param product the product object
    */
   deleteProduct(productId: number, product: Product) {
-    const deleteUrl = `${this.baseUrl}/${productId}`;
+    const deleteUrl = `${this.baseUrl}/delete/${productId}`;
 
     this.httpClient.delete(deleteUrl).subscribe(
       () => this.logger.info('Admin deleted product', JSON.stringify(product))

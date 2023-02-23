@@ -223,7 +223,7 @@ export class ProductManagementComponent implements OnInit {
 
   onDelete() {
     this.productService.deleteProduct(this.product.id!, this.product);
-    location.reload();
+    // location.reload();
   }
 
   onCreate() {
