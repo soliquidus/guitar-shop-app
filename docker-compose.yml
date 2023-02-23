@@ -29,7 +29,7 @@ services:
       - "4444:4444"
     restart: on-failure
     environment:
-      SPRING.DATASOURCE.URL: jdbc:mysql://db:3307/guitar_shop_db?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING.DATASOURCE.URL: jdbc:mysql://app-db:3307/guitar_shop_db?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING.DATASOURCE.USER: root
       SPRING.DATASOURCE.PASSWORD: root
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
